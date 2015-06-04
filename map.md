@@ -27,7 +27,7 @@ Tests if an element is in the domain of the map.
 Example
 ```fsharp
 let  map1 = Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
- let  findKeyAndPrint key map =
+let  findKeyAndPrint key map =
      if  (Map.containsKey key map)  then 
         printfn  "The specified map contains the key %d."  key
      else 
@@ -72,7 +72,7 @@ Creates a new map containing only the bindings for which the given predicate ret
 Example
 ```fsharp
 printfn  "Even numbers and their squares."  
- let  map1 = Map.ofList [ for  i  in  1 .. 10 -> (i, i*i)]
+let  map1 = Map.ofList [ for  i  in  1 .. 10 -> (i, i*i)]
            |> Map.filter ( fun  key _ -> key % 2 = 0)
            |> Map.iter ( fun  key value -> printf  "(%d, %d) "  key value)
 printfn  "" 
@@ -109,16 +109,16 @@ Example
 ```fsharp
 let  findKeyFromValue findValue map =
     printfn  "With value %A, found key %A."  findValue (Map.findKey ( fun  key value -> value = findValue) map)
- let  map1 = Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
- let  map2 = Map.ofList [  for  i  in  1 .. 10 -> (i, i*i) ]
- try 
+let  map1 = Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
+let  map2 = Map.ofList [  for  i  in  1 .. 10 -> (i, i*i) ]
+try 
     findKeyFromValue  "one"  map1
     findKeyFromValue  "two"  map1
     findKeyFromValue 9 map2
     findKeyFromValue 25 map2
      // The key is not in the map, so the following line throws an exception. 
     findKeyFromValue 0 map2
- with 
+with 
      :? System.Collections.Generic.KeyNotFoundException  as  e -> printfn  "%s"  e.Message
  ```
 Output
@@ -140,11 +140,11 @@ Folds over the bindings in the map
 Example
 ```fsharp
 let  map1 = Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
- // Sum the keys.  
- let  result1 = Map.fold ( fun  state key value -> state + key) 0 map1
+// Sum the keys.  
+let  result1 = Map.fold ( fun  state key value -> state + key) 0 map1
 printfn  "Result: %d"  result1
- // Concatenate the values.  
- let  result2 = Map.fold ( fun  state key value -> state + value +  " " )  ""  map1
+// Concatenate the values.  
+let  result2 = Map.fold ( fun  state key value -> state + value +  " " )  ""  map1
 printfn  "Result: %s"  result2
  ```
 Output
@@ -164,10 +164,10 @@ Example
 ```fsharp
 let  map1 = Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
  // Sum the keys.  
- let  result1 = Map.foldBack ( fun  key value state -> state + key) map1 0
+let  result1 = Map.foldBack ( fun  key value state -> state + key) map1 0
 printfn  "Result: %d"  result1
  // Concatenate the values.  
- let  result2 = Map.foldBack ( fun  key value state -> state + value +  " " ) map1  "" 
+let  result2 = Map.foldBack ( fun  key value state -> state + value +  " " ) map1  "" 
 printfn  "Result: %s"  result2 
  ```
 Output
@@ -186,8 +186,8 @@ Returns true if the given predicate returns true for all of the bindings in the 
 Example
 ```fsharp
 let  map1 = Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
- let  map2 = Map.ofList [ (-1,  "negative one" ); (2,  "two" ); (3,  "three" ) ]
- let  allPositive = Map.forall ( fun  key value -> key > 0)
+let  map2 = Map.ofList [ (-1,  "negative one" ); (2,  "two" ); (3,  "three" ) ]
+let  allPositive = Map.forall ( fun  key value -> key > 0)
 printfn  "%b %b"  (allPositive map1) (allPositive map2)
  ```
 Output
@@ -247,8 +247,8 @@ Creates a new collection whose elements are the results of applying the given fu
 Example
 ```fsharp
 let  map1 = Map.ofList [ (1,  "One" ); (2,  "Two" ); (3,  "Three" ) ]
- let  map2 = map1 |> Map.map ( fun  key value -> value.ToUpper())
- let  map3 = map1 |> Map.map ( fun  key value -> value.ToLower())
+let  map2 = map1 |> Map.map ( fun  key value -> value.ToUpper())
+let  map3 = map1 |> Map.map ( fun  key value -> value.ToLower())
 printfn  "%A"  map1
 printfn  "%A"  map2
 printfn  "%A"  map3
@@ -333,7 +333,7 @@ Creates two new maps, one containing the bindings for which the given predicate 
 Example
 ```fsharp
 let  map1 = [  for  i  in  1..10 -> (i, i*i)] |> Map.ofList
- let  (mapEven, mapOdd) = Map.partition ( fun  key value -> key % 2 = 0) map1
+let  (mapEven, mapOdd) = Map.partition ( fun  key value -> key % 2 = 0) map1
 printfn  "Evens: %A"  mapEven
 printfn  "Odds: %A"  mapOdd
  ```
@@ -353,7 +353,7 @@ Searches the map looking for the first element where the given function returns 
 Example
 ```fsharp
 let  map1 = [  for  i  in  1 .. 100 -> (i, 100 - i) ] |> Map.ofList
- let  result = Map.pick ( fun  key value ->  if  key = value  then  Some(key)  else  None) map1
+let  result = Map.pick ( fun  key value ->  if  key = value  then  Some(key)  else  None) map1
 printfn  "Result where key and value are the same: %d"  result
  ```
 Output
@@ -455,10 +455,10 @@ Looks up an element in the map, returning a  Some  value if the element is in th
 Example
 ```fsharp
 let  map1 = [  for  i  in  1 .. 100 -> (i, i*i) ] |> Map.ofList
- let  result = Map.tryFind 50 map1
+let  result = Map.tryFind 50 map1
  match  result  with 
-| Some x -> printfn  "Found %d."  x
-| None -> printfn  "Did not find the specified value." 
+ | Some x -> printfn  "Found %d."  x
+ | None -> printfn  "Did not find the specified value." 
  ```
 Output
 ```
@@ -475,10 +475,10 @@ Returns the key of the first mapping in the collection that satisfies the given 
 Example
 ```fsharp
 let  map1 = [  for  i  in  1 .. 100 -> (i, i*i) ] |> Map.ofList
- let  result = Map.tryFindKey ( fun  key value -> key = value) map1
+let  result = Map.tryFindKey ( fun  key value -> key = value) map1
  match  result  with 
-| Some key -> printfn  "Found element with key %d."  key
-| None -> printfn  "Did not find any element that matches the condition." 
+ | Some key -> printfn  "Found element with key %d."  key
+ | None -> printfn  "Did not find any element that matches the condition." 
  ```
 Output
 ```
@@ -495,11 +495,11 @@ Searches the map looking for the first element where the given function returns 
 Example
 ```fsharp
 let  map1 = [  for  i  in  1 .. 100 -> (i, 100 - i) ] |> Map.ofList
- let  result = Map.tryPick ( fun  key value ->  if  key = value  then  Some(key)  else  None) map1
+let  result = Map.tryPick ( fun  key value ->  if  key = value  then  Some(key)  else  None) map1
  match  result  with 
-| Some x -> printfn  "Result where key and value are the same: %d"  x
-| None -> printfn  "No result satisifies the condition." 
- ```
+ | Some x -> printfn  "Result where key and value are the same: %d"  x
+ | None -> printfn  "No result satisifies the condition." 
+```
 Output
 ```
 Result where key and value are the same: 50 
