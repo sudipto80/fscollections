@@ -1,8 +1,11 @@
 
 Collections.Map Module (F#)
 ------------------------------
+
+<pre><span style="color:Blue;">
 ```fsharp
-<pre><span style="color:Blue;">let</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>&nbsp; 
+let
+```</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>&nbsp; 
 <span style="color:Blue;">let</span> histogram = 
     data.ToCharArray()
     |&gt; Seq.groupBy (<span style="color:Blue;">fun</span> c -&gt; c)
@@ -11,7 +14,7 @@ Collections.Map Module (F#)
 <span style="color:Blue;">for</span> (KeyValue(c,n)) <span style="color:Blue;">in</span> histogram <span style="color:Blue;">do</span> 
     printfn <span style="color:#A31515;">"Number of '%c' characters = %d"</span> c n 
 </pre>
-```
+
 There are 24 methods to interact with a F# map
 
 add
