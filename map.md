@@ -1,9 +1,5 @@
 
 
-fsmap module
-
-
-5IEnumerable<String> (24 items)4 
 add
 --------------
 Returns a new map with the binding added to the given map.
