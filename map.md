@@ -1,7 +1,9 @@
 
-F# map Module 
-=============
 
+fsmap module
+
+
+5IEnumerable<String> (24 items)4 
 add
 --------------
 Returns a new map with the binding added to the given map.
@@ -10,10 +12,7 @@ Returns a new map with the binding added to the given map.
 ```
 Example
 ```fsharp
-Map.ofList [ (1,  "one" ); (2,  "two" ); (3,  "three" ) ]
-|> Map.add(0)  "zero" 
-|> Map.iter ( fun  key value -> printfn  "key: %d value: %s"  key value)
- ```
+```
 Output
 ```
 key: 0 value: zero
