@@ -1,4 +1,7 @@
 
+Collections.Map Module (F#)
+------------------------------
+There are 24 methods to interact with a F# map
 
 add
 --------------
