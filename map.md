@@ -2,10 +2,7 @@
 Collections.Map Module (F#)
 ------------------------------
 
-<pre><span style="color:Blue;">
-```fsharp
-let
-```</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>&nbsp; 
+<pre><span style="color:Blue;">let</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>&nbsp; 
 <span style="color:Blue;">let</span> histogram = 
     data.ToCharArray()
     |&gt; Seq.groupBy (<span style="color:Blue;">fun</span> c -&gt; c)
