@@ -1,5 +1,3 @@
-
-
 append
 --------------
 Creates an array that contains the elements of one array followed by the elements of another array.
@@ -257,10 +255,12 @@ let  arrayA = [| 2 .. 100 |]
  let  delta = 1.0e-10
  let  isPerfectSquare (x: int ) =
      let  y = sqrt ( float  x)
-    abs(y - round y)  let  isPerfectCube (x: int ) =
+    abs(y - round y) < delta
+ let  isPerfectCube (x: int ) =
      let  y = System.Math.Pow( float  x, 1.0/3.0)
-    abs(y - round y)  let  element = Array.find ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) arrayA
- let  index = Array.findIndex ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) arrayA
+    abs(y - round y) < delta
+ let  element = Array.find ( fun  elem -> isPerfectSquare elem && isPerfectCube elem) arrayA
+ let  index = Array.findIndex ( fun  elem -> isPerfectSquare elem && isPerfectCube elem) arrayA
 printfn  "The first element that is both a square and a cube is %d and its index is %d."  element index
  ```
 Output
@@ -281,10 +281,12 @@ let  arrayA = [| 2 .. 100 |]
  let  delta = 1.0e-10
  let  isPerfectSquare (x: int ) =
      let  y = sqrt ( float  x)
-    abs(y - round y)  let  isPerfectCube (x: int ) =
+    abs(y - round y) < delta
+ let  isPerfectCube (x: int ) =
      let  y = System.Math.Pow( float  x, 1.0/3.0)
-    abs(y - round y)  let  element = Array.find ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) arrayA
- let  index = Array.findIndex ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) arrayA
+    abs(y - round y) < delta
+ let  element = Array.find ( fun  elem -> isPerfectSquare elem && isPerfectCube elem) arrayA
+ let  index = Array.findIndex ( fun  elem -> isPerfectSquare elem && isPerfectCube elem) arrayA
 printfn  "The first element that is both a square and a cube is %d and its index is %d."  element index
  ```
 Output
@@ -803,7 +805,8 @@ Splits an array into two arrays, one containing the elements for which the suppl
 Example
 ```fsharp
 let  removeOutliers array1 min max =
-    Array.partition ( fun  elem -> elem > min &amp;&amp; elem   fst
+    Array.partition ( fun  elem -> elem > min && elem < max) array1
+    |> fst
 removeOutliers [| 1 .. 100 |] 50 60
 |> printf  "%A" 
  ```
@@ -823,7 +826,7 @@ Example
 ```fsharp
 let  printPermutation n array1 =
      let  length = Array.length array1
-     if  (n > 0 &amp;&amp; n  then 
+     if  (n > 0 && n < length)  then 
         Array.permute ( fun  index -> (index + n) % length) array1
      else 
         array1
@@ -1102,13 +1105,13 @@ Example
 ```fsharp
 open  System
 
- let  array1 = [|  " ;  "&amp;" ;  "&amp;&amp;" ;  "&amp;&amp;&amp;" ;  " ;  ">" ;  "|" ;  "||" ;  "|||"  |]
+ let  array1 = [|  "<>" ;  "&" ;  "&&" ;  "&&&" ;  "<" ;  ">" ;  "|" ;  "||" ;  "|||"  |]
 printfn  "Before sorting: " 
 array1 |> printfn  "%A"  
  let  sortFunction (string1: string ) (string2: string ) =
      if  (string1.Length > string2.Length)  then 
        1
-     else   if  (string1.Length  then 
+     else   if  (string1.Length < string2.Length)  then 
        -1
      else 
         String.Compare(string1, string2)
@@ -1132,13 +1135,13 @@ Example
 ```fsharp
 open  System
 
- let  array1 = [|  " ;  "&amp;" ;  "&amp;&amp;" ;  "&amp;&amp;&amp;" ;  " ;  ">" ;  "|" ;  "||" ;  "|||"  |]
+ let  array1 = [|  "<>" ;  "&" ;  "&&" ;  "&&&" ;  "<" ;  ">" ;  "|" ;  "||" ;  "|||"  |]
 printfn  "Before sorting: " 
 array1 |> printfn  "%A"  
  let  sortFunction (string1: string ) (string2: string ) =
      if  (string1.Length > string2.Length)  then 
        1
-     else   if  (string1.Length  then 
+     else   if  (string1.Length < string2.Length)  then 
        -1
      else 
         String.Compare(string1, string2)
@@ -1234,10 +1237,12 @@ Example
 let  delta = 1.0e-10
  let  isPerfectSquare (x: int ) =
      let  y = sqrt ( float  x)
-    abs(y - round y)  let  isPerfectCube (x: int ) =
+    abs(y - round y) < delta
+ let  isPerfectCube (x: int ) =
      let  y = System.Math.Pow( float  x, 1.0/3.0)
-    abs(y - round y)  let  lookForCubeAndSquare array1 =
-     let  result = Array.tryFind ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) array1
+    abs(y - round y) < delta
+ let  lookForCubeAndSquare array1 =
+     let  result = Array.tryFind ( fun  elem -> isPerfectSquare elem && isPerfectCube elem) array1
      match  result  with 
     | Some x -> printfn  "Found an element: %d"  x
     | None -> printfn  "Failed to find a matching element." 
@@ -1287,9 +1292,11 @@ let  findPerfectSquareAndCube array1 =
      let  delta = 1.0e-10
      let  isPerfectSquare (x: int ) =
          let  y = sqrt ( float  x)
-        abs(y - round y)  let  isPerfectCube (x: int ) =
+        abs(y - round y) < delta
+     let  isPerfectCube (x: int ) =
          let  y = System.Math.Pow( float  x, 1.0/3.0)
-        abs(y - round y)  // intFunction : (float -> float) -> int -> int  
+        abs(y - round y) < delta
+     // intFunction : (float -> float) -> int -> int  
      // Allows the use of a floating point function with integers.  
      let  intFunction function1 number =  int  (round (function1 ( float  number)))
      let  cubeRoot x = System.Math.Pow(x, 1.0/3.0)
@@ -1298,7 +1305,7 @@ let  findPerfectSquareAndCube array1 =
      // cube, and, if so, return the element, square root, and cube root  
      // as an option value. Otherwise, return None.  
      let  testElement elem = 
-         if  isPerfectSquare elem &amp;&amp; isPerfectCube elem  then 
+         if  isPerfectSquare elem && isPerfectCube elem  then 
             Some(elem, intFunction sqrt elem, intFunction cubeRoot elem)
          else  None
      match  Array.tryPick testElement array1  with 
