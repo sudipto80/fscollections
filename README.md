@@ -8,8 +8,10 @@ F# Collections
 [seq](https://github.com/sudipto80/fscollections/blob/master/seq.md)
 
 [map](https://github.com/sudipto80/fscollections/blob/master/map.md)
+
+
 |Function|Description|
-|--------|-----------|
+|:--------|:-----------|
 |add|Returns a new map with the binding added to the given map.|
 |containsKey|Tests if an element is in the domain of the map.|
 |exists|Returns  true  if the given predicate returns true for one of the bindings in the map.|
