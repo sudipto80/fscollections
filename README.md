@@ -1,6 +1,7 @@
-F# Collections
+<h1>F# Collections</h1>
 --------------
-
+module array
+------------
 [array](https://github.com/sudipto80/fscollections/blob/master/array.md)
 
 |Function|Description|
