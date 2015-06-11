@@ -164,4 +164,39 @@ F# Collections
 |[tryFind](https://github.com/sudipto80/fscollections/blob/master/map.md#tryfind)|Looks up an element in the map, returning a  Some  value if the element is in the domain of the map, or  None  if not.|
 |[tryFindKey](https://github.com/sudipto80/fscollections/blob/master/map.md#tryfindkey)|Returns the key of the first mapping in the collection that satisfies the given predicate, or returns  None  if no such element exists.|
 |[tryPick](https://github.com/sudipto80/fscollections/blob/master/map.md#trypick)|Searches the map looking for the first element where the given function returns a  Some  value.|
+
 [set](https://github.com/sudipto80/fscollections/blob/master/set.md)
+|Function|Description|
+|:--------|:-----------|
+|[add](https://github.com/sudipto80/fscollections/blob/master/set.md#add)|Returns a new set with an element added to the set. No exception is raised if the set already contains the given element.|
+|[contains](https://github.com/sudipto80/fscollections/blob/master/set.md#contains)|Evaluates to  true  if the given element is in the given set.|
+|[count](https://github.com/sudipto80/fscollections/blob/master/set.md#count)|Returns the number of elements in the set.|
+|[difference](https://github.com/sudipto80/fscollections/blob/master/set.md#difference)|Returns a new set with the elements of the second set removed from the first.|
+|[exists](https://github.com/sudipto80/fscollections/blob/master/set.md#exists)|Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .|
+|[filter](https://github.com/sudipto80/fscollections/blob/master/set.md#filter)|Returns a new collection containing only the elements of the collection for which the given predicate returns  true .|
+|[fold](https://github.com/sudipto80/fscollections/blob/master/set.md#fold)|Applies the given accumulating function to all the elements of the set|
+|[foldBack](https://github.com/sudipto80/fscollections/blob/master/set.md#foldback)|Applies the given accumulating function to all the elements of the set.|
+|[forall](https://github.com/sudipto80/fscollections/blob/master/set.md#forall)|Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .|
+|[intersect](https://github.com/sudipto80/fscollections/blob/master/set.md#intersect)|Computes the intersection of the two sets.|
+|[intersectMany](https://github.com/sudipto80/fscollections/blob/master/set.md#intersectmany)|Computes the intersection of a sequence of sets. The sequence must be non-empty.|
+|[isEmpty](https://github.com/sudipto80/fscollections/blob/master/set.md#isempty)|Returns  true  if the set is empty.|
+|[isProperSubset](https://github.com/sudipto80/fscollections/blob/master/set.md#ispropersubset)|Evaluates to  true  if all elements of the first set are in the second, and at least one element of the second is not in the first.|
+|[isProperSuperset](https://github.com/sudipto80/fscollections/blob/master/set.md#ispropersuperset)|Evaluates to  true  if all elements of the second set are in the first, and at least one element of the first is not in the second.|
+|[isSubset](https://github.com/sudipto80/fscollections/blob/master/set.md#issubset)|Evaluates to  true  if all elements of the first set are in the second|
+|[isSuperset](https://github.com/sudipto80/fscollections/blob/master/set.md#issuperset)|Evaluates to  true  if all elements of the second set are in the first.|
+|[iter](https://github.com/sudipto80/fscollections/blob/master/set.md#iter)|Applies the given function to each element of the set, in order according to the comparison function.|
+|[map](https://github.com/sudipto80/fscollections/blob/master/set.md#map)|Returns a new collection containing the results of applying the given function to each element of the input set.|
+|[maxElement](https://github.com/sudipto80/fscollections/blob/master/set.md#maxelement)|Returns the highest element in the set according to the ordering being used for the set.|
+|[minElement](https://github.com/sudipto80/fscollections/blob/master/set.md#minelement)|Returns the lowest element in the set according to the ordering being used for the set.|
+|[ofArray](https://github.com/sudipto80/fscollections/blob/master/set.md#ofarray)|Creates a set that contains the same elements as the given array.|
+|[ofList](https://github.com/sudipto80/fscollections/blob/master/set.md#oflist)|Creates a set that contains the same elements as the given list.|
+|[ofSeq](https://github.com/sudipto80/fscollections/blob/master/set.md#ofseq)|Creates a new collection from the given enumerable object.|
+|[partition](https://github.com/sudipto80/fscollections/blob/master/set.md#partition)|Splits the set into two sets containing the elements for which the given predicate returns true and false respectively.|
+|[remove](https://github.com/sudipto80/fscollections/blob/master/set.md#remove)|Returns a new set with the given element removed. No exception is raised if the set doesn't contain the given element.|
+|[singleton](https://github.com/sudipto80/fscollections/blob/master/set.md#singleton)|The set containing the given element.|
+|[toArray](https://github.com/sudipto80/fscollections/blob/master/set.md#toarray)|Creates an array that contains the elements of the set in order.|
+|[toSeq](https://github.com/sudipto80/fscollections/blob/master/set.md#toseq)|Returns an ordered view of the collection as an enumerable object.|
+|[union](https://github.com/sudipto80/fscollections/blob/master/set.md#union)|Computes the union of the two sets.|
+|[unionMany](https://github.com/sudipto80/fscollections/blob/master/set.md#unionmany)|Computes the union of a sequence of sets.|
+
+
