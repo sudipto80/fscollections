@@ -166,6 +166,7 @@ F# Collections
 |[tryPick](https://github.com/sudipto80/fscollections/blob/master/map.md#trypick)|Searches the map looking for the first element where the given function returns a  Some  value.|
 
 [set](https://github.com/sudipto80/fscollections/blob/master/set.md)
+
 |Function|Description|
 |:--------|:-----------|
 |[add](https://github.com/sudipto80/fscollections/blob/master/set.md#add)|Returns a new set with an element added to the set. No exception is raised if the set already contains the given element.|
