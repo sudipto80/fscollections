@@ -135,6 +135,130 @@ F# Collections
 
 [seq](https://github.com/sudipto80/fscollections/blob/master/seq.md)
 
+|Function|Description|
+|:--------|:-----------|
+|[add](https://github.com/sudipto80/fscollections/blob/master/seq.md#add)|Returns a new set with an element added to the set. No exception is raised if the set already contains the given element.|
+|[contains](https://github.com/sudipto80/fscollections/blob/master/seq.md#contains)|Evaluates to  true  if the given element is in the given set.|
+|[count](https://github.com/sudipto80/fscollections/blob/master/seq.md#count)|Returns the number of elements in the set.|
+|[difference](https://github.com/sudipto80/fscollections/blob/master/seq.md#difference)|Returns a new set with the elements of the second set removed from the first.|
+|[exists](https://github.com/sudipto80/fscollections/blob/master/seq.md#exists)|Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .|
+|[exists](https://github.com/sudipto80/fscollections/blob/master/seq.md#exists)|Tests if any element of the sequence satisfies the given predicate.|
+|[filter](https://github.com/sudipto80/fscollections/blob/master/seq.md#filter)|Returns a new collection containing only the elements of the collection for which the given predicate returns  true .|
+|[filter](https://github.com/sudipto80/fscollections/blob/master/seq.md#filter)|Returns a new collection containing only the elements of the collection for which the given predicate returns  true .|
+|[fold](https://github.com/sudipto80/fscollections/blob/master/seq.md#fold)|Applies the given accumulating function to all the elements of the set|
+|[fold](https://github.com/sudipto80/fscollections/blob/master/seq.md#fold)|Applies a function to each element of the collection, threading an accumulator argument through the computation. If the input function is  f  and the elements are  i0...iN,  then this function computes  f (... (f s i0)...) iN .|
+|[foldBack](https://github.com/sudipto80/fscollections/blob/master/seq.md#foldback)|Applies the given accumulating function to all the elements of the set.|
+|[forall](https://github.com/sudipto80/fscollections/blob/master/seq.md#forall)|Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .|
+|[forall](https://github.com/sudipto80/fscollections/blob/master/seq.md#forall)|Tests if all elements of the sequence satisfy the given predicate.|
+|[intersect](https://github.com/sudipto80/fscollections/blob/master/seq.md#intersect)|Computes the intersection of the two sets.|
+|[intersectMany](https://github.com/sudipto80/fscollections/blob/master/seq.md#intersectmany)|Computes the intersection of a sequence of sets. The sequence must be non-empty.|
+|[isEmpty](https://github.com/sudipto80/fscollections/blob/master/seq.md#isempty)|Returns  true  if the set is empty.|
+|[isEmpty](https://github.com/sudipto80/fscollections/blob/master/seq.md#isempty)|Tests whether a sequence has any elements.|
+|[isProperSubset](https://github.com/sudipto80/fscollections/blob/master/seq.md#ispropersubset)|Evaluates to  true  if all elements of the first set are in the second, and at least one element of the second is not in the first.|
+|[isProperSuperset](https://github.com/sudipto80/fscollections/blob/master/seq.md#ispropersuperset)|Evaluates to  true  if all elements of the second set are in the first, and at least one element of the first is not in the second.|
+|[isSubset](https://github.com/sudipto80/fscollections/blob/master/seq.md#issubset)|Evaluates to  true  if all elements of the first set are in the second|
+|[isSuperset](https://github.com/sudipto80/fscollections/blob/master/seq.md#issuperset)|Evaluates to  true  if all elements of the second set are in the first.|
+|[iter](https://github.com/sudipto80/fscollections/blob/master/seq.md#iter)|Applies the given function to each element of the set, in order according to the comparison function.|
+|[iter](https://github.com/sudipto80/fscollections/blob/master/seq.md#iter)|Applies the given function to each element of the collection.|
+|[map](https://github.com/sudipto80/fscollections/blob/master/seq.md#map)|Returns a new collection containing the results of applying the given function to each element of the input set.|
+|[map](https://github.com/sudipto80/fscollections/blob/master/seq.md#map)|Creates a new collection whose elements are the results of applying the given function to each of the elements of the collection. The given function will be applied as elements are demanded using the  MoveNext  method on enumerators retrieved from the object.|
+|[maxElement](https://github.com/sudipto80/fscollections/blob/master/seq.md#maxelement)|Returns the highest element in the set according to the ordering being used for the set.|
+|[minElement](https://github.com/sudipto80/fscollections/blob/master/seq.md#minelement)|Returns the lowest element in the set according to the ordering being used for the set.|
+|[ofArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#ofarray)|Creates a set that contains the same elements as the given array.|
+|[ofArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#ofarray)|Views the given array as a sequence.|
+|[ofList](https://github.com/sudipto80/fscollections/blob/master/seq.md#oflist)|Creates a set that contains the same elements as the given list.|
+|[ofList](https://github.com/sudipto80/fscollections/blob/master/seq.md#oflist)|Views the given list as a sequence.|
+|[ofSeq](https://github.com/sudipto80/fscollections/blob/master/seq.md#ofseq)|Creates a new collection from the given enumerable object.|
+|[partition](https://github.com/sudipto80/fscollections/blob/master/seq.md#partition)|Splits the set into two sets containing the elements for which the given predicate returns true and false respectively.|
+|[remove](https://github.com/sudipto80/fscollections/blob/master/seq.md#remove)|Returns a new set with the given element removed. No exception is raised if the set doesn't contain the given element.|
+|[singleton](https://github.com/sudipto80/fscollections/blob/master/seq.md#singleton)|The set containing the given element.|
+|[singleton](https://github.com/sudipto80/fscollections/blob/master/seq.md#singleton)|Returns a sequence that yields one item only.|
+|[toArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#toarray)|Creates an array that contains the elements of the set in order.|
+|[toArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#toarray)|Creates an array from the given collection.|
+|[toList](https://github.com/sudipto80/fscollections/blob/master/seq.md#tolist)|Creates a list from the given collection.|
+|[toSeq](https://github.com/sudipto80/fscollections/blob/master/seq.md#toseq)|Returns an ordered view of the collection as an enumerable object.|
+|[union](https://github.com/sudipto80/fscollections/blob/master/seq.md#union)|Computes the union of the two sets.|
+|[unionMany](https://github.com/sudipto80/fscollections/blob/master/seq.md#unionmany)|Computes the union of a sequence of sets.|
+|[append](https://github.com/sudipto80/fscollections/blob/master/seq.md#append)|Wraps the two given enumerations as a single concatenated enumeration.|
+|[average](https://github.com/sudipto80/fscollections/blob/master/seq.md#average)|Returns the average of the elements in the sequence.|
+|[averageBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#averageby)|Returns the average of the results generated by applying the function to each element of the sequence.|
+|[cache](https://github.com/sudipto80/fscollections/blob/master/seq.md#cache)|Returns a sequence that corresponds to a cached version of the input sequence.|
+|[cast](https://github.com/sudipto80/fscollections/blob/master/seq.md#cast)|Wraps a loosely-typed  System.Collections  sequence as a typed sequence.|
+|[choose](https://github.com/sudipto80/fscollections/blob/master/seq.md#choose)|Applies the given function to each element of the list. Return the list comprised of the results for each element where the function returns  Some .|
+|[collect](https://github.com/sudipto80/fscollections/blob/master/seq.md#collect)|Applies the given function to each element of the sequence and concatenates all the results.|
+|[compareWith](https://github.com/sudipto80/fscollections/blob/master/seq.md#comparewith)|Compares two sequences using the given comparison function, element by element.|
+|[concat](https://github.com/sudipto80/fscollections/blob/master/seq.md#concat)|Combines the given enumeration-of-enumerations as a single concatenated enumeration.|
+|[countBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#countby)|Applies a key-generating function to each element of a sequence and return a sequence yielding unique keys and their number of occurrences in the original sequence.|
+|[delay](https://github.com/sudipto80/fscollections/blob/master/seq.md#delay)|Returns a sequence that is built from the given delayed specification of a sequence.|
+|[distinct](https://github.com/sudipto80/fscollections/blob/master/seq.md#distinct)|Returns a sequence that contains no duplicate entries according to generic hash and equality comparisons on the entries. If an element occurs multiple times in the sequence then the later occurrences are discarded.|
+|[distinctBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#distinctby)|Returns a sequence that contains no duplicate entries according to the generic hash and equality comparisons on the keys returned by the given key-generating function. If an element occurs multiple times in the sequence then the later occurrences are discarded.|
+|[exactlyOne](https://github.com/sudipto80/fscollections/blob/master/seq.md#exactlyone)|Returns the only element of the sequence.|
+|[exists](https://github.com/sudipto80/fscollections/blob/master/seq.md#exists)|Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .|
+|[exists](https://github.com/sudipto80/fscollections/blob/master/seq.md#exists)|Tests if any element of the sequence satisfies the given predicate.|
+|[exists2](https://github.com/sudipto80/fscollections/blob/master/seq.md#exists2)|Tests if any pair of corresponding elements of the input sequences satisfies the given predicate.|
+|[filter](https://github.com/sudipto80/fscollections/blob/master/seq.md#filter)|Returns a new collection containing only the elements of the collection for which the given predicate returns  true .|
+|[filter](https://github.com/sudipto80/fscollections/blob/master/seq.md#filter)|Returns a new collection containing only the elements of the collection for which the given predicate returns  true .|
+|[find](https://github.com/sudipto80/fscollections/blob/master/seq.md#find)|Returns the first element for which the given function returns  true .|
+|[findIndex](https://github.com/sudipto80/fscollections/blob/master/seq.md#findindex)|Returns the index of the first element for which the given function returns  true .|
+|[fold](https://github.com/sudipto80/fscollections/blob/master/seq.md#fold)|Applies the given accumulating function to all the elements of the set|
+|[fold](https://github.com/sudipto80/fscollections/blob/master/seq.md#fold)|Applies a function to each element of the collection, threading an accumulator argument through the computation. If the input function is  f  and the elements are  i0...iN,  then this function computes  f (... (f s i0)...) iN .|
+|[forall](https://github.com/sudipto80/fscollections/blob/master/seq.md#forall)|Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .|
+|[forall](https://github.com/sudipto80/fscollections/blob/master/seq.md#forall)|Tests if all elements of the sequence satisfy the given predicate.|
+|[forall2](https://github.com/sudipto80/fscollections/blob/master/seq.md#forall2)|Tests the all pairs of elements drawn from the two sequences satisfy the given predicate. If one sequence is shorter than the other then the remaining elements of the longer sequence are ignored.|
+|[groupBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#groupby)|Applies a key-generating function to each element of a sequence and yields a sequence of unique keys. Each unique key has also contains a sequence of all elements that match to this key.|
+|[head](https://github.com/sudipto80/fscollections/blob/master/seq.md#head)|Returns the first element of the sequence.|
+|[init](https://github.com/sudipto80/fscollections/blob/master/seq.md#init)|Generates a new sequence which, when iterated, returns successive elements by calling the given function, up to the given count. The results of calling the function are not saved, that is, the function is reapplied as necessary to regenerate the elements. The function is passed the index of the item being generated.|
+|[initInfinite](https://github.com/sudipto80/fscollections/blob/master/seq.md#initinfinite)|Generates a new sequence which, when iterated, will return successive elements by calling the given function. The results of calling the function are not saved, that is, the function will be reapplied as necessary to regenerate the elements. The function is passed the index of the item being generated.|
+|[isEmpty](https://github.com/sudipto80/fscollections/blob/master/seq.md#isempty)|Returns  true  if the set is empty.|
+|[isEmpty](https://github.com/sudipto80/fscollections/blob/master/seq.md#isempty)|Tests whether a sequence has any elements.|
+|[iter](https://github.com/sudipto80/fscollections/blob/master/seq.md#iter)|Applies the given function to each element of the set, in order according to the comparison function.|
+|[iter](https://github.com/sudipto80/fscollections/blob/master/seq.md#iter)|Applies the given function to each element of the collection.|
+|[iteri](https://github.com/sudipto80/fscollections/blob/master/seq.md#iteri)|Applies the given function to each element of the collection. The integer passed to the function indicates the index of element.|
+|[iter2](https://github.com/sudipto80/fscollections/blob/master/seq.md#iter2)|Applies the given function to two collections simultaneously. If one sequence is shorter than the other then the remaining elements of the longer sequence are ignored.|
+|[last](https://github.com/sudipto80/fscollections/blob/master/seq.md#last)|Returns the last element of the sequence.|
+|[length](https://github.com/sudipto80/fscollections/blob/master/seq.md#length)|Returns the length of the sequence.|
+|[map](https://github.com/sudipto80/fscollections/blob/master/seq.md#map)|Returns a new collection containing the results of applying the given function to each element of the input set.|
+|[map](https://github.com/sudipto80/fscollections/blob/master/seq.md#map)|Creates a new collection whose elements are the results of applying the given function to each of the elements of the collection. The given function will be applied as elements are demanded using the  MoveNext  method on enumerators retrieved from the object.|
+|[mapi](https://github.com/sudipto80/fscollections/blob/master/seq.md#mapi)|Creates a new collection whose elements are the results of applying the given function to each of the elements of the collection. The integer index passed to the function indicates the index (from 0) of element being transformed.|
+|[map2](https://github.com/sudipto80/fscollections/blob/master/seq.md#map2)|Creates a new collection whose elements are the results of applying the given function to the corresponding pairs of elements from the two sequences. If one input sequence is shorter than the other then the remaining elements of the longer sequence are ignored.|
+|[max](https://github.com/sudipto80/fscollections/blob/master/seq.md#max)|Returns the greatest of all elements of the sequence, compared by using  Operators.max .|
+|[maxBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#maxby)|Returns the greatest of all elements of the sequence, compared by using  Operators.max  on the function result.|
+|[min](https://github.com/sudipto80/fscollections/blob/master/seq.md#min)|Returns the lowest of all elements of the sequence, compared by using  Operators.min .|
+|[minBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#minby)|Returns the lowest of all elements of the sequence, compared by using  Operators.min  on the function result.|
+|[nth](https://github.com/sudipto80/fscollections/blob/master/seq.md#nth)|Computes the  nth  element in the collection.|
+|[ofArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#ofarray)|Creates a set that contains the same elements as the given array.|
+|[ofArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#ofarray)|Views the given array as a sequence.|
+|[ofList](https://github.com/sudipto80/fscollections/blob/master/seq.md#oflist)|Creates a set that contains the same elements as the given list.|
+|[ofList](https://github.com/sudipto80/fscollections/blob/master/seq.md#oflist)|Views the given list as a sequence.|
+|[pairwise](https://github.com/sudipto80/fscollections/blob/master/seq.md#pairwise)|Returns a sequence of each element in the input sequence and its predecessor, with the exception of the first element which is only returned as the predecessor of the second element.|
+|[pick](https://github.com/sudipto80/fscollections/blob/master/seq.md#pick)|Applies the given function to successive elements, returning the first value where the function returns a  Some  value.|
+|[readonly](https://github.com/sudipto80/fscollections/blob/master/seq.md#readonly)|Creates a new sequence object that delegates to the given sequence object. This ensures the original sequence cannot be rediscovered and mutated by a type cast. For example, if given an array the returned sequence will return the elements of the array, but you cannot cast the returned sequence object to an array.|
+|[reduce](https://github.com/sudipto80/fscollections/blob/master/seq.md#reduce)|Applies a function to each element of the sequence, threading an accumulator argument through the computation. Begin by applying the function to the first two elements. Then feed this result into the function along with the third element and so on. Return the final result.|
+|[scan](https://github.com/sudipto80/fscollections/blob/master/seq.md#scan)|Like  Seq.fold , but computes on-demand and returns the sequence of intermediary and final results.|
+|[singleton](https://github.com/sudipto80/fscollections/blob/master/seq.md#singleton)|The set containing the given element.|
+|[singleton](https://github.com/sudipto80/fscollections/blob/master/seq.md#singleton)|Returns a sequence that yields one item only.|
+|[skip](https://github.com/sudipto80/fscollections/blob/master/seq.md#skip)|Returns a sequence that skips a specified number of elements of the underlying sequence and then yields the remaining elements of the sequence.|
+|[skipWhile](https://github.com/sudipto80/fscollections/blob/master/seq.md#skipwhile)|Returns a sequence that, when iterated, skips elements of the underlying sequence while the given predicate returns  true , and then yields the remaining elements of the sequence.|
+|[sort](https://github.com/sudipto80/fscollections/blob/master/seq.md#sort)|Yields a sequence ordered by keys.|
+|[sum](https://github.com/sudipto80/fscollections/blob/master/seq.md#sum)|Returns the sum of the elements in the sequence.|
+|[sumBy](https://github.com/sudipto80/fscollections/blob/master/seq.md#sumby)|take|
+|[take](https://github.com/sudipto80/fscollections/blob/master/seq.md#take)|Returns the first elements of the sequence up to a specified count.|
+|[takeWhile](https://github.com/sudipto80/fscollections/blob/master/seq.md#takewhile)|Returns a sequence that, when iterated, yields elements of the underlying sequence while the given predicate returns  true , and then returns no further elements.|
+|[toArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#toarray)|Creates an array that contains the elements of the set in order.|
+|[toArray](https://github.com/sudipto80/fscollections/blob/master/seq.md#toarray)|Creates an array from the given collection.|
+|[toList](https://github.com/sudipto80/fscollections/blob/master/seq.md#tolist)|Creates a list from the given collection.|
+|[tryFind](https://github.com/sudipto80/fscollections/blob/master/seq.md#tryfind)|Returns the first element for which the given function returns  true , or  None  if no such element exists.|
+|[tryFindIndex](https://github.com/sudipto80/fscollections/blob/master/seq.md#tryfindindex)|Returns the index of the first element in the sequence that satisfies the given predicate, or  None  if no such element exists.|
+|[tryPick](https://github.com/sudipto80/fscollections/blob/master/seq.md#trypick)|Applies the given function to successive elements, returning the first value where the function returns a  Some  value.|
+|[truncate](https://github.com/sudipto80/fscollections/blob/master/seq.md#truncate)|Returns a sequence that when enumerated returns no more than a specified number of elements.|
+|[unfold](https://github.com/sudipto80/fscollections/blob/master/seq.md#unfold)|Returns a sequence that contains the elements generated by the given computation.|
+|[where](https://github.com/sudipto80/fscollections/blob/master/seq.md#where)|Returns a new collection containing only the elements of the collection for which the given predicate returns  true . A synonym for  Seq.filter .|
+|[windowed](https://github.com/sudipto80/fscollections/blob/master/seq.md#windowed)|Returns a sequence that yields sliding windows of containing elements drawn from the input sequence. Each window is returned as a fresh array.|
+|[zip](https://github.com/sudipto80/fscollections/blob/master/seq.md#zip)|Combines the two sequences into a list of pairs. The two sequences need not have equal lengths: when one sequence is exhausted any remaining elements in the other sequence are ignored.|
+|[zip3](https://github.com/sudipto80/fscollections/blob/master/seq.md#zip3)|Combines the three sequences into a list of triples. The sequences need not have equal lengths: when one sequence is exhausted any remaining elements in the other sequences are ignored.|
+
+
+
 [map](https://github.com/sudipto80/fscollections/blob/master/map.md)
 
 
