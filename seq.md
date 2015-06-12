@@ -1,3 +1,11 @@
+A
+AA
+
+
+
+
+
+
 append
 -----
 Wraps the two given enumerations as a single concatenated enumeration.
