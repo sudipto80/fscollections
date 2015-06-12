@@ -1,6 +1,3 @@
-
-
-
 add
 --------------
 Returns a new set with an element added to the set. No exception is raised if the set already contains the given element.
@@ -9,7 +6,7 @@ Returns a new set with an element added to the set. No exception is raised if th
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -30,7 +27,7 @@ Evaluates to  true  if the given element is in the given set.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -51,7 +48,7 @@ Returns the number of elements in the set.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -66,11 +63,11 @@ Returns a new set with the elements of the second set removed from the first.
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 3 ]
- let  set2 = Set.ofList [ 2 .. 6 ]
- let  setDiff = Set.difference set2 set1
-printfn  "Set.difference [2 .. 6] [1 .. 3] yields %A"  setDiff
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ]
+<span style="color:Blue;">let</span> setDiff = Set.difference set2 set1
+printfn <span style="color:#A31515;">"Set.difference [2 .. 6] [1 .. 3] yields %A"</span> setDiff
+</pre>
 Output
 ```
 Set.difference [2 .. 6] [1 .. 3] yields set [4; 5; 6] 
@@ -85,7 +82,7 @@ Tests if any element of the collection satisfies the given predicate. If the inp
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -106,10 +103,10 @@ Returns a new collection containing only the elements of the collection for whic
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 10]
-           |> Set.filter ( fun  elem -> elem % 2 = 0)
-printfn  "%A"  set1
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
+           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
+printfn <span style="color:#A31515;">"%A"</span> set1
+</pre>
 Output
 ```
 set [2; 4; 6; 8; 10] 
@@ -124,7 +121,7 @@ Applies the given accumulating function to all the elements of the set
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -145,7 +142,7 @@ Applies the given accumulating function to all the elements of the set.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -166,7 +163,7 @@ Tests if all elements of the collection satisfy the given predicate. If the inpu
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -187,11 +184,11 @@ Computes the intersection of the two sets.
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 3 ]
- let  set2 = Set.ofList [ 2 .. 6 ] 
- let  setIntersect = Set.intersect set1 set2
-printfn  "Set.intersect [1 .. 3] [2 .. 6] yields %A"  setIntersect
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ] 
+<span style="color:Blue;">let</span> setIntersect = Set.intersect set1 set2
+printfn <span style="color:#A31515;">"Set.intersect [1 .. 3] [2 .. 6] yields %A"</span> setIntersect
+</pre>
 Output
 ```
 Set.intersect [1 .. 3] [2 .. 6] yields set [2; 3] 
@@ -206,13 +203,13 @@ Computes the intersection of a sequence of sets. The sequence must be non-empty.
 ```
 Example
 ```fsharp
-let  seqOfSets =
-     seq  {  for  i  in  1 .. 9  do   yield  Set.ofList [ i .. i .. 10000 ] }  
- let  setResult = Set.intersectMany seqOfSets
-printfn  "Numbers between 1 and 10,000 that are divisible by " 
-printfn  "all the numbers from 1 to 9:" 
-printfn  "%A"  setResult
- ```
+<pre><span style="color:Blue;">let</span> seqOfSets =
+    <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 9 <span style="color:Blue;">do</span> <span style="color:Blue;">yield</span> Set.ofList [ i .. i .. 10000 ] }  
+<span style="color:Blue;">let</span> setResult = Set.intersectMany seqOfSets
+printfn <span style="color:#A31515;">"Numbers between 1 and 10,000 that are divisible by "</span>
+printfn <span style="color:#A31515;">"all the numbers from 1 to 9:"</span>
+printfn <span style="color:#A31515;">"%A"</span> setResult
+</pre>
 Output
 ```
 Numbers between 1 and 10,000 that are divisible by 
@@ -229,7 +226,7 @@ Returns  true  if the set is empty.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -250,14 +247,14 @@ Evaluates to  true  if all elements of the first set are in the second, and at l
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 6 ]
- let  set2 = Set.ofList [ 1 .. 5 ]
- let  set3 = Set.ofList [ 1 .. 6 ]
- let  set4 = Set.ofList [ 5 .. 10 ]
-printfn  "%A is a proper subset of %A: %b"  set2 set1 (Set.isProperSubset set2 set1)
-printfn  "%A is a proper subset of %A: %b"  set3 set1 (Set.isProperSubset set3 set1) 
-printfn  "%A is a proper subset of %A: %b"  set4 set1 (Set.isProperSubset set4 set1) 
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 5 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set2 set1 (Set.isProperSubset set2 set1)
+printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set3 set1 (Set.isProperSubset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set4 set1 (Set.isProperSubset set4 set1) 
+</pre>
 Output
 ```
 set [1; 2; 3; 4; 5] is a proper subset of set [1; 2; 3; 4; 5; 6]: true
@@ -274,14 +271,14 @@ Evaluates to  true  if all elements of the second set are in the first, and at l
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 6 ]
- let  set2 = Set.ofList [ 1 .. 9 ]
- let  set3 = Set.ofList [ 1 .. 6 ]
- let  set4 = Set.ofList [ 5 .. 10 ]
-printfn  "%A is a proper superset of %A: %b"  set2 set1 (Set.isProperSuperset set2 set1)
-printfn  "%A is a proper superset of %A: %b"  set3 set1 (Set.isProperSuperset set3 set1) 
-printfn  "%A is a proper superset of %A: %b"  set4 set1 (Set.isProperSuperset set4 set1) 
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 9 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set2 set1 (Set.isProperSuperset set2 set1)
+printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set3 set1 (Set.isProperSuperset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set4 set1 (Set.isProperSuperset set4 set1) 
+</pre>
 Output
 ```
 set [1; 2; 3; 4; 5; 6; 7; 8; 9] is a proper superset of set [1; 2; 3; 4; 5; 6]: true
@@ -298,14 +295,14 @@ Evaluates to  true  if all elements of the first set are in the second
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 6 ]
- let  set2 = Set.ofList [ 1 .. 5 ]
- let  set3 = Set.ofList [ 1 .. 6 ]
- let  set4 = Set.ofList [ 5 .. 10 ]
-printfn  "%A is a subset of %A: %b"  set2 set1 (Set.isSubset set2 set1)
-printfn  "%A is a subset of %A: %b"  set3 set1 (Set.isSubset set3 set1) 
-printfn  "%A is a subset of %A: %b"  set4 set1 (Set.isSubset set4 set1) 
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 5 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set2 set1 (Set.isSubset set2 set1)
+printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set3 set1 (Set.isSubset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set4 set1 (Set.isSubset set4 set1) 
+</pre>
 Output
 ```
 set [1; 2; 3; 4; 5] is a subset of set [1; 2; 3; 4; 5; 6]: true
@@ -322,14 +319,14 @@ Evaluates to  true  if all elements of the second set are in the first.
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 1 .. 6 ]
- let  set2 = Set.ofList [ 1 .. 9 ]
- let  set3 = Set.ofList [ 1 .. 6 ]
- let  set4 = Set.ofList [ 5 .. 10 ]
-printfn  "%A is a superset of %A: %b"  set2 set1 (Set.isSuperset set2 set1)
-printfn  "%A is a superset of %A: %b"  set3 set1 (Set.isSuperset set3 set1) 
-printfn  "%A is a superset of %A: %b"  set4 set1 (Set.isSuperset set4 set1) 
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 9 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set2 set1 (Set.isSuperset set2 set1)
+printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set3 set1 (Set.isSuperset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set4 set1 (Set.isSuperset set4 set1) 
+</pre>
 Output
 ```
 set [1; 2; 3; 4; 5; 6; 7; 8; 9] is a superset of set [1; 2; 3; 4; 5; 6]: true
@@ -346,7 +343,7 @@ Applies the given function to each element of the set, in order according to the
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -367,7 +364,7 @@ Returns a new collection containing the results of applying the given function t
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -388,7 +385,7 @@ Returns the highest element in the set according to the ordering being used for 
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -409,7 +406,7 @@ Returns the lowest element in the set according to the ordering being used for t
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -430,7 +427,7 @@ Creates a set that contains the same elements as the given array.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -451,7 +448,7 @@ Creates a set that contains the same elements as the given list.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -472,14 +469,14 @@ Creates a new collection from the given enumerable object.
 ```
 Example
 ```fsharp
-let  data =  "The quick brown fox jumps over the lazy dog"   
- let  set = 
+<pre><span style="color:Blue;">let</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>  
+<span style="color:Blue;">let</span> set = 
     data.ToCharArray()
-    |> Set.ofSeq
- for  c  in  set  do  
-    printf  "'%c' "  c 
-printfn  "" 
- ```
+    |&gt; Set.ofSeq
+<span style="color:Blue;">for</span> c <span style="color:Blue;">in</span> set <span style="color:Blue;">do</span> 
+    printf <span style="color:#A31515;">"'%c' "</span> c 
+printfn <span style="color:#A31515;">""</span>
+</pre>
 Output
 ```
 ' ' 'T' 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j' 'k' 'l' 'm' 'n' 'o' 'p' 'q' 'r' 's' 't' 'u' 'v' 'w' 'x' 'y' 'z'  
@@ -494,7 +491,7 @@ Splits the set into two sets containing the elements for which the given predica
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -515,7 +512,7 @@ Returns a new set with the given element removed. No exception is raised if the 
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -536,7 +533,7 @@ The set containing the given element.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -557,7 +554,7 @@ Creates an array that contains the elements of the set in order.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -578,7 +575,7 @@ Returns an ordered view of the collection as an enumerable object.
 ```
 Example
 ```fsharp
-```
+
 Output
 ```
 
@@ -599,11 +596,11 @@ Computes the union of the two sets.
 ```
 Example
 ```fsharp
-let  set1 = Set.ofList [ 2 .. 2 .. 8 ]
- let  set2 = Set.ofList [ 1 .. 2 .. 9 ]
- let  set3 = Set.union set1 set2
-printfn  "%A union %A yields %A"  set1 set2 set3
- ```
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 2 .. 2 .. 8 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 2 .. 9 ]
+<span style="color:Blue;">let</span> set3 = Set.union set1 set2
+printfn <span style="color:#A31515;">"%A union %A yields %A"</span> set1 set2 set3
+</pre>
 Output
 ```
 set [2; 4; 6; 8] union set [1; 3; 5; 7; 9] yields set [1; 2; 3; 4; 5; 6; 7; 8; 9] 
@@ -618,17 +615,15 @@ Computes the union of a sequence of sets.
 ```
 Example
 ```fsharp
-     let  seqOfSets =
-         seq  {  for  i  in  2 .. 5  do   yield  Set.ofList [ i .. i .. 40 ] }  
-     let  setResult = Set.unionMany seqOfSets
-    printfn  "Numbers up to 40 that are multiples of numbers from 2 to 5:" 
-    Set.iter ( fun  elem -> printf  "%d "  elem) setResult
- ```
+<pre>    <span style="color:Blue;">let</span> seqOfSets =
+        <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 2 .. 5 <span style="color:Blue;">do</span> <span style="color:Blue;">yield</span> Set.ofList [ i .. i .. 40 ] }  
+    <span style="color:Blue;">let</span> setResult = Set.unionMany seqOfSets
+    printfn <span style="color:#A31515;">"Numbers up to 40 that are multiples of numbers from 2 to 5:"</span>
+    Set.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem) setResult
+</pre>
 Output
 ```
 Numbers up to 40 that are multiples of numbers from 2 to 5:
 2 3 4 5 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27 28 30 32 33 34 35 36 38 39 40  
 ```
-
- 
  
