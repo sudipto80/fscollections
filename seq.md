@@ -1,4 +1,885 @@
 
+
+
+add
+--------------
+Returns a new set with an element added to the set. No exception is raised if the set already contains the given element.
+```
+: 'T -> Set<'T> -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.add : 'T -> Set  -> Set  (requires comparison)
+
+// Usage:
+Set.add value set
+ 
+```
+
+ 
+contains
+--------------
+Evaluates to  true  if the given element is in the given set.
+```
+: 'T -> Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.contains : 'T -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.contains element set
+ 
+```
+
+ 
+count
+--------------
+Returns the number of elements in the set.
+```
+: Set<'T> -> int
+```
+Example
+
+
+Output
+```
+
+```
+
+ 
+difference
+--------------
+Returns a new set with the elements of the second set removed from the first.
+```
+: Set<'T> -> Set<'T> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ]
+<span style="color:Blue;">let</span> setDiff = Set.difference set2 set1
+printfn <span style="color:#A31515;">"Set.difference [2 .. 6] [1 .. 3] yields %A"</span> setDiff
+</pre>
+Output
+```
+Set.difference [2 .. 6] [1 .. 3] yields set [4; 5; 6] 
+```
+
+ 
+exists
+--------------
+Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .
+```
+: ('T -> bool) -> Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.exists predicate set
+ 
+```
+
+ 
+exists
+--------------
+Tests if any element of the sequence satisfies the given predicate.
+```
+: ('T -> bool) -> seq<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.exists predicate set
+ 
+```
+
+ 
+filter
+--------------
+Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
+```
+: ('T -> bool) -> Set<'T> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
+           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
+printfn <span style="color:#A31515;">"%A"</span> set1
+</pre>
+Output
+```
+set [2; 4; 6; 8; 10] 
+```
+
+ 
+filter
+--------------
+Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
+```
+: ('T -> bool) -> seq<'T> -> seq<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
+           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
+printfn <span style="color:#A31515;">"%A"</span> set1
+</pre>
+Output
+```
+set [2; 4; 6; 8; 10] 
+```
+
+ 
+fold
+--------------
+Applies the given accumulating function to all the elements of the set
+```
+: ('State -> 'T -> 'State) -> 'State -> Set<'T> -> 'State
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
+
+// Usage:
+Set.fold folder state set
+ 
+```
+
+ 
+fold
+--------------
+Applies a function to each element of the collection, threading an accumulator argument through the computation. If the input function is  f  and the elements are  i0...iN,  then this function computes  f (... (f s i0)...) iN .
+```
+: ('State -> 'T -> 'State) -> 'State -> seq<'T> -> 'State
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
+
+// Usage:
+Set.fold folder state set
+ 
+```
+
+ 
+foldBack
+--------------
+Applies the given accumulating function to all the elements of the set.
+```
+: ('T -> 'State -> 'State) -> Set<'T> -> 'State -> 'State
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.foldBack : ('T -> 'State -> 'State) -> Set  -> 'State -> 'State (requires comparison)
+
+// Usage:
+Set.foldBack folder set state
+ 
+```
+
+ 
+forall
+--------------
+Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .
+```
+: ('T -> bool) -> Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.forall predicate set
+ 
+```
+
+ 
+forall
+--------------
+Tests if all elements of the sequence satisfy the given predicate.
+```
+: ('T -> bool) -> seq<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.forall predicate set
+ 
+```
+
+ 
+intersect
+--------------
+Computes the intersection of the two sets.
+```
+: Set<'T> -> Set<'T> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ] 
+<span style="color:Blue;">let</span> setIntersect = Set.intersect set1 set2
+printfn <span style="color:#A31515;">"Set.intersect [1 .. 3] [2 .. 6] yields %A"</span> setIntersect
+</pre>
+Output
+```
+Set.intersect [1 .. 3] [2 .. 6] yields set [2; 3] 
+```
+
+ 
+intersectMany
+--------------
+Computes the intersection of a sequence of sets. The sequence must be non-empty.
+```
+: seq<Set<'T>> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> seqOfSets =
+    <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 9 <span style="color:Blue;">do</span> <span style="color:Blue;">yield</span> Set.ofList [ i .. i .. 10000 ] }  
+<span style="color:Blue;">let</span> setResult = Set.intersectMany seqOfSets
+printfn <span style="color:#A31515;">"Numbers between 1 and 10,000 that are divisible by "</span>
+printfn <span style="color:#A31515;">"all the numbers from 1 to 9:"</span>
+printfn <span style="color:#A31515;">"%A"</span> setResult
+</pre>
+Output
+```
+Numbers between 1 and 10,000 that are divisible by 
+all the numbers from 1 to 9:
+set [2520; 5040; 7560] 
+```
+
+ 
+isEmpty
+--------------
+Returns  true  if the set is empty.
+```
+: Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.isEmpty : Set  -> bool (requires comparison)
+
+// Usage:
+Set.isEmpty set
+ 
+```
+
+ 
+isEmpty
+--------------
+Tests whether a sequence has any elements.
+```
+: seq<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.isEmpty : Set  -> bool (requires comparison)
+
+// Usage:
+Set.isEmpty set
+ 
+```
+
+ 
+isProperSubset
+--------------
+Evaluates to  true  if all elements of the first set are in the second, and at least one element of the second is not in the first.
+```
+: Set<'T> -> Set<'T> -> bool
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 5 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set2 set1 (Set.isProperSubset set2 set1)
+printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set3 set1 (Set.isProperSubset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set4 set1 (Set.isProperSubset set4 set1) 
+</pre>
+Output
+```
+set [1; 2; 3; 4; 5] is a proper subset of set [1; 2; 3; 4; 5; 6]: true
+set [1; 2; 3; 4; 5; 6] is a proper subset of set [1; 2; 3; 4; 5; 6]: false
+set [5; 6; 7; 8; 9; 10] is a proper subset of set [1; 2; 3; 4; 5; 6]: false 
+```
+
+ 
+isProperSuperset
+--------------
+Evaluates to  true  if all elements of the second set are in the first, and at least one element of the first is not in the second.
+```
+: Set<'T> -> Set<'T> -> bool
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 9 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set2 set1 (Set.isProperSuperset set2 set1)
+printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set3 set1 (Set.isProperSuperset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set4 set1 (Set.isProperSuperset set4 set1) 
+</pre>
+Output
+```
+set [1; 2; 3; 4; 5; 6; 7; 8; 9] is a proper superset of set [1; 2; 3; 4; 5; 6]: true
+set [1; 2; 3; 4; 5; 6] is a proper superset of set [1; 2; 3; 4; 5; 6]: false
+set [5; 6; 7; 8; 9; 10] is a proper superset of set [1; 2; 3; 4; 5; 6]: false 
+```
+
+ 
+isSubset
+--------------
+Evaluates to  true  if all elements of the first set are in the second
+```
+: Set<'T> -> Set<'T> -> bool
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 5 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set2 set1 (Set.isSubset set2 set1)
+printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set3 set1 (Set.isSubset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set4 set1 (Set.isSubset set4 set1) 
+</pre>
+Output
+```
+set [1; 2; 3; 4; 5] is a subset of set [1; 2; 3; 4; 5; 6]: true
+set [1; 2; 3; 4; 5; 6] is a subset of set [1; 2; 3; 4; 5; 6]: true
+set [5; 6; 7; 8; 9; 10] is a subset of set [1; 2; 3; 4; 5; 6]: false 
+```
+
+ 
+isSuperset
+--------------
+Evaluates to  true  if all elements of the second set are in the first.
+```
+: Set<'T> -> Set<'T> -> bool
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 9 ]
+<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
+<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
+printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set2 set1 (Set.isSuperset set2 set1)
+printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set3 set1 (Set.isSuperset set3 set1) 
+printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set4 set1 (Set.isSuperset set4 set1) 
+</pre>
+Output
+```
+set [1; 2; 3; 4; 5; 6; 7; 8; 9] is a superset of set [1; 2; 3; 4; 5; 6]: true
+set [1; 2; 3; 4; 5; 6] is a superset of set [1; 2; 3; 4; 5; 6]: true
+set [5; 6; 7; 8; 9; 10] is a superset of set [1; 2; 3; 4; 5; 6]: false 
+```
+
+ 
+iter
+--------------
+Applies the given function to each element of the set, in order according to the comparison function.
+```
+: ('T -> unit) -> Set<'T> -> unit
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
+
+// Usage:
+Set.iter action set
+ 
+```
+
+ 
+iter
+--------------
+Applies the given function to each element of the collection.
+```
+: ('T -> unit) -> seq<'T> -> unit
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
+
+// Usage:
+Set.iter action set
+ 
+```
+
+ 
+map
+--------------
+Returns a new collection containing the results of applying the given function to each element of the input set.
+```
+: ('T -> 'U) -> Set<'T> -> Set<'U>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
+
+// Usage:
+Set.map mapping set
+ 
+```
+
+ 
+map
+--------------
+Creates a new collection whose elements are the results of applying the given function to each of the elements of the collection. The given function will be applied as elements are demanded using the  MoveNext  method on enumerators retrieved from the object.
+```
+: ('T -> 'U) -> seq<'T> -> seq<'U>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
+
+// Usage:
+Set.map mapping set
+ 
+```
+
+ 
+maxElement
+--------------
+Returns the highest element in the set according to the ordering being used for the set.
+```
+: Set<'T> -> 'T
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.maxElement : Set  -> 'T (requires comparison)
+
+// Usage:
+Set.maxElement set
+ 
+```
+
+ 
+minElement
+--------------
+Returns the lowest element in the set according to the ordering being used for the set.
+```
+: Set<'T> -> 'T
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.minElement : Set  -> 'T (requires comparison)
+
+// Usage:
+Set.minElement set
+ 
+```
+
+ 
+ofArray
+--------------
+Creates a set that contains the same elements as the given array.
+```
+: 'T array -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.ofArray : 'T array -> Set  (requires comparison)
+
+// Usage:
+Set.ofArray array
+ 
+```
+
+ 
+ofArray
+--------------
+Views the given array as a sequence.
+```
+: 'T array -> seq<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.ofArray : 'T array -> Set  (requires comparison)
+
+// Usage:
+Set.ofArray array
+ 
+```
+
+ 
+ofList
+--------------
+Creates a set that contains the same elements as the given list.
+```
+: 'T list -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.ofList : 'T list -> Set  (requires comparison)
+
+// Usage:
+Set.ofList elements
+ 
+```
+
+ 
+ofList
+--------------
+Views the given list as a sequence.
+```
+: 'T list -> seq<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.ofList : 'T list -> Set  (requires comparison)
+
+// Usage:
+Set.ofList elements
+ 
+```
+
+ 
+ofSeq
+--------------
+Creates a new collection from the given enumerable object.
+```
+: seq<'T> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>  
+<span style="color:Blue;">let</span> set = 
+    data.ToCharArray()
+    |&gt; Set.ofSeq
+<span style="color:Blue;">for</span> c <span style="color:Blue;">in</span> set <span style="color:Blue;">do</span> 
+    printf <span style="color:#A31515;">"'%c' "</span> c 
+printfn <span style="color:#A31515;">""</span>
+</pre>
+Output
+```
+' ' 'T' 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j' 'k' 'l' 'm' 'n' 'o' 'p' 'q' 'r' 's' 't' 'u' 'v' 'w' 'x' 'y' 'z'  
+```
+
+ 
+partition
+--------------
+Splits the set into two sets containing the elements for which the given predicate returns true and false respectively.
+```
+: ('T -> bool) -> Set<'T> -> Set<'T> * Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.partition : ('T -> bool) -> Set  -> Set  * Set  (requires comparison)
+
+// Usage:
+Set.partition predicate set
+ 
+```
+
+ 
+remove
+--------------
+Returns a new set with the given element removed. No exception is raised if the set doesn't contain the given element.
+```
+: 'T -> Set<'T> -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.remove : 'T -> Set  -> Set  (requires comparison)
+
+// Usage:
+Set.remove value set
+ 
+```
+
+ 
+singleton
+--------------
+The set containing the given element.
+```
+: 'T -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.singleton : 'T -> Set  (requires comparison)
+
+// Usage:
+Set.singleton value
+ 
+```
+
+ 
+singleton
+--------------
+Returns a sequence that yields one item only.
+```
+: 'T -> seq<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.singleton : 'T -> Set  (requires comparison)
+
+// Usage:
+Set.singleton value
+ 
+```
+
+ 
+toArray
+--------------
+Creates an array that contains the elements of the set in order.
+```
+: Set<'T> -> 'T array
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.toArray : Set  -> 'T array (requires comparison)
+
+// Usage:
+Set.toArray set
+ 
+```
+
+ 
+toArray
+--------------
+Creates an array from the given collection.
+```
+: seq<'T> -> 'T []
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.toArray : Set  -> 'T array (requires comparison)
+
+// Usage:
+Set.toArray set
+ 
+```
+
+ 
+toList
+--------------
+Creates a list from the given collection.
+```
+: seq<'T> -> 'T list
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.toList : Set  -> 'T list (requires comparison)
+
+// Usage:
+Set.toList set
+ 
+```
+
+ 
+toSeq
+--------------
+Returns an ordered view of the collection as an enumerable object.
+```
+: Set<'T> -> seq<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.toSeq : Set  -> seq  (requires comparison)
+
+// Usage:
+Set.toSeq set
+ 
+```
+
+ 
+union
+--------------
+Computes the union of the two sets.
+```
+: Set<'T> -> Set<'T> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 2 .. 2 .. 8 ]
+<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 2 .. 9 ]
+<span style="color:Blue;">let</span> set3 = Set.union set1 set2
+printfn <span style="color:#A31515;">"%A union %A yields %A"</span> set1 set2 set3
+</pre>
+Output
+```
+set [2; 4; 6; 8] union set [1; 3; 5; 7; 9] yields set [1; 2; 3; 4; 5; 6; 7; 8; 9] 
+```
+
+ 
+unionMany
+--------------
+Computes the union of a sequence of sets.
+```
+: seq<Set<'T>> -> Set<'T>
+```
+Example
+
+<pre>    <span style="color:Blue;">let</span> seqOfSets =
+        <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 2 .. 5 <span style="color:Blue;">do</span> <span style="color:Blue;">yield</span> Set.ofList [ i .. i .. 40 ] }  
+    <span style="color:Blue;">let</span> setResult = Set.unionMany seqOfSets
+    printfn <span style="color:#A31515;">"Numbers up to 40 that are multiples of numbers from 2 to 5:"</span>
+    Set.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem) setResult
+</pre>
+Output
+```
+Numbers up to 40 that are multiples of numbers from 2 to 5:
+2 3 4 5 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27 28 30 32 33 34 35 36 38 39 40  
+```
+
+ 
 append
 --------------
 Wraps the two given enumerations as a single concatenated enumeration.
@@ -6,9 +887,9 @@ Wraps the two given enumerations as a single concatenated enumeration.
 : seq<'T> -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-printfn  "%A"  (Seq.append [| 1; 2; 3|] [ 4; 5; 6])
- ```
+
+<pre>printfn <span style="color:#A31515;">"%A"</span> (Seq.append [| 1; 2; 3|] [ 4; 5; 6])
+</pre>
 Output
 ```
 seq [1; 2; 3; 4; ...] 
@@ -22,14 +903,14 @@ Returns the average of the elements in the sequence.
 : seq<^T> -> ^T
 ```
 Example
-```fsharp
-// You can use Seq.average to average elements of a list, array, or sequence.  
- let  average1 = Seq.average [ 1.0 .. 10.0 ]
-printfn  "Average: %f"  average1
- // To average a sequence of integers, use Seq.averageBy to convert to float.  
- let  average2 = Seq.averageBy ( fun  elem ->  float  elem) ( seq  { 1 .. 10 })
-printfn  "Average: %f"  average2
- ```
+
+<pre><span style="color:Green;">// You can use Seq.average to average elements of a list, array, or sequence. </span>
+<span style="color:Blue;">let</span> average1 = Seq.average [ 1.0 .. 10.0 ]
+printfn <span style="color:#A31515;">"Average: %f"</span> average1
+<span style="color:Green;">// To average a sequence of integers, use Seq.averageBy to convert to float. </span>
+<span style="color:Blue;">let</span> average2 = Seq.averageBy (<span style="color:Blue;">fun</span> elem -&gt; <span style="color:Blue;">float</span> elem) (<span style="color:Blue;">seq</span> { 1 .. 10 })
+printfn <span style="color:#A31515;">"Average: %f"</span> average2
+</pre>
 Output
 ```
 Average: 5.500000
@@ -44,14 +925,14 @@ Returns the average of the results generated by applying the function to each el
 : ('T -> ^U) -> seq<'T> -> ^U
 ```
 Example
-```fsharp
-// You can use Seq.average to average elements of a list, array, or sequence.  
- let  average1 = Seq.average [ 1.0 .. 10.0 ]
-printfn  "Average: %f"  average1
- // To average a sequence of integers, use Seq.averageBy to convert to float.  
- let  average2 = Seq.averageBy ( fun  elem ->  float  elem) ( seq  { 1 .. 10 })
-printfn  "Average: %f"  average2
- ```
+
+<pre><span style="color:Green;">// You can use Seq.average to average elements of a list, array, or sequence. </span>
+<span style="color:Blue;">let</span> average1 = Seq.average [ 1.0 .. 10.0 ]
+printfn <span style="color:#A31515;">"Average: %f"</span> average1
+<span style="color:Green;">// To average a sequence of integers, use Seq.averageBy to convert to float. </span>
+<span style="color:Blue;">let</span> average2 = Seq.averageBy (<span style="color:Blue;">fun</span> elem -&gt; <span style="color:Blue;">float</span> elem) (<span style="color:Blue;">seq</span> { 1 .. 10 })
+printfn <span style="color:#A31515;">"Average: %f"</span> average2
+</pre>
 Output
 ```
 Average: 5.500000
@@ -66,16 +947,19 @@ Returns a sequence that corresponds to a cached version of the input sequence.
 : seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-// Recursive isprime function.  
- let  isPrime n =
-     let   rec  check i =
-        i > n/2 || (n % i  let  seqPrimes =  seq  {  for  n  in  2 .. 10000  do   if  isPrime n  then   yield  n }
- // Cache the sequence to avoid recomputing the sequence elements.  
- let  cachedSeq = Seq.cache seqPrimes
- for  index  in  1..5  do 
-    printfn  "%d is prime."  (Seq.nth (Seq.length cachedSeq - index) cachedSeq)
- ```
+
+<pre><span style="color:Green;">// Recursive isprime function. </span>
+<span style="color:Blue;">let</span> isPrime n =
+    <span style="color:Blue;">let</span> <span style="color:Blue;">rec</span> check i =
+        i &gt; n/2 || (n % i &lt;&gt; 0 &amp;&amp; check (i + 1))
+    check 2
+
+<span style="color:Blue;">let</span> seqPrimes = <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> n <span style="color:Blue;">in</span> 2 .. 10000 <span style="color:Blue;">do</span> <span style="color:Blue;">if</span> isPrime n <span style="color:Blue;">then</span> <span style="color:Blue;">yield</span> n }
+<span style="color:Green;">// Cache the sequence to avoid recomputing the sequence elements. </span>
+<span style="color:Blue;">let</span> cachedSeq = Seq.cache seqPrimes
+<span style="color:Blue;">for</span> index <span style="color:Blue;">in</span> 1..5 <span style="color:Blue;">do</span>
+    printfn <span style="color:#A31515;">"%d is prime."</span> (Seq.nth (Seq.length cachedSeq - index) cachedSeq)
+</pre>
 Output
 ```
 9973 is prime.
@@ -93,12 +977,12 @@ Wraps a loosely-typed  System.Collections  sequence as a typed sequence.
 : IEnumerable -> seq<'T>
 ```
 Example
-```fsharp
-open  System
- let   mutable  arrayList1 =  new  System.Collections.ArrayList(10)
- for  i  in  1 .. 10  do  arrayList1.Add(10) |> ignore
- let  seqCast :  seq int > = Seq.cast arrayList1
- ```
+
+<pre><span style="color:Blue;">open</span> System
+<span style="color:Blue;">let</span> <span style="color:Blue;">mutable</span> arrayList1 = <span style="color:Blue;">new</span> System.Collections.ArrayList(10)
+<span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 <span style="color:Blue;">do</span> arrayList1.Add(10) |&gt; ignore
+<span style="color:Blue;">let</span> seqCast : <span style="color:Blue;">seq</span>&lt;<span style="color:Blue;">int</span>&gt; = Seq.cast arrayList1
+</pre>
 Output
 ```
 
@@ -117,15 +1001,15 @@ Applies the given function to each element of the list. Return the list comprise
 : ('T -> 'U option) -> seq<'T> -> seq<'U>
 ```
 Example
-```fsharp
-let  numbers =  seq  {1..20}
- let  evens = Seq.choose( fun  x -> 
-                             match  x  with 
-                            | x  when  x%2=0 -> Some(x)
-                            | _ -> None ) numbers
-printfn  "numbers = %A\n"  numbers
-printfn  "evens = %A"  evens
- ```
+
+<pre><span style="color:Blue;">let</span> numbers = <span style="color:Blue;">seq</span> {1..20}
+<span style="color:Blue;">let</span> evens = Seq.choose(<span style="color:Blue;">fun</span> x -&gt; 
+                            <span style="color:Blue;">match</span> x <span style="color:Blue;">with</span>
+                            | x <span style="color:Blue;">when</span> x%2=0 -&gt; Some(x)
+                            | _ -&gt; None ) numbers
+printfn <span style="color:#A31515;">"numbers = %A\n"</span> numbers
+printfn <span style="color:#A31515;">"evens = %A"</span> evens
+</pre>
 Output
 ```
 numbers = seq [1; 2; 3; 4; ...]
@@ -141,18 +1025,11 @@ Applies the given function to each element of the sequence and concatenates all 
 : ('T -> 'Collection) -> seq<'T> -> seq<'U>
 ```
 Example
-```fsharp
-let  addNegations seq1 =
-   Seq.collect ( fun  x ->  seq  {  yield  x;  yield  -x }) seq1
-   |> Seq.sort
-addNegations [ 1 .. 4 ] |> Seq.iter ( fun  elem -> printf  "%d "  elem)
-printfn  "" 
-addNegations [| 0; -4; 2; -12 |] |> Seq.iter ( fun  elem -> printf  "%d "  elem)
- ```
+
+
 Output
 ```
--4 -3 -2 -1 1 2 3 4 
--12 -4 -2 0 0 2 4 12 
+
 ```
 
  
@@ -163,23 +1040,23 @@ Compares two sequences using the given comparison function, element by element.
 : ('T -> 'T -> int) -> seq<'T> -> seq<'T> -> int
 ```
 Example
-```fsharp
-let  sequence1 =  seq  { 1 .. 10 }
- let  sequence2 =  seq  { 10 .. -1 .. 1 }
 
- // Compare two sequences element by element.  
- let  compareSequences = Seq.compareWith ( fun  elem1 elem2 ->
-     if  elem1 > elem2  then  1
-     elif  elem1  then  -1
-     else  0) 
+<pre><span style="color:Blue;">let</span> sequence1 = <span style="color:Blue;">seq</span> { 1 .. 10 }
+<span style="color:Blue;">let</span> sequence2 = <span style="color:Blue;">seq</span> { 10 .. -1 .. 1 }
 
- let  compareResult1 = compareSequences sequence1 sequence2
- match  compareResult1  with 
-| 1 -> printfn  "Sequence1 is greater than sequence2." 
-| -1 -> printfn  "Sequence1 is less than sequence2." 
-| 0 -> printfn  "Sequence1 is equal to sequence2." 
-| _ -> failwith( "Invalid comparison result." )
- ```
+<span style="color:Green;">// Compare two sequences element by element. </span>
+<span style="color:Blue;">let</span> compareSequences = Seq.compareWith (<span style="color:Blue;">fun</span> elem1 elem2 -&gt;
+    <span style="color:Blue;">if</span> elem1 &gt; elem2 <span style="color:Blue;">then</span> 1
+    <span style="color:Blue;">elif</span> elem1 &lt; elem2 <span style="color:Blue;">then</span> -1
+    <span style="color:Blue;">else</span> 0) 
+
+<span style="color:Blue;">let</span> compareResult1 = compareSequences sequence1 sequence2
+<span style="color:Blue;">match</span> compareResult1 <span style="color:Blue;">with</span>
+| 1 -&gt; printfn <span style="color:#A31515;">"Sequence1 is greater than sequence2."</span>
+| -1 -&gt; printfn <span style="color:#A31515;">"Sequence1 is less than sequence2."</span>
+| 0 -&gt; printfn <span style="color:#A31515;">"Sequence1 is equal to sequence2."</span>
+| _ -&gt; failwith(<span style="color:#A31515;">"Invalid comparison result."</span>)
+</pre>
 Output
 ```
 Sequence1 is less than sequence2. 
@@ -193,15 +1070,15 @@ Combines the given enumeration-of-enumerations as a single concatenated enumerat
 : seq<'Collection> -> seq<'T>
 ```
 Example
-```fsharp
-// Using Seq.append to append an array to a list.  
- let  seq1to10 = Seq.append [1; 2; 3] [| 4; 5; 6; 7; 8; 9; 10 |]
- // Using Seq.concat to concatenate a list of arrays.  
- let  seqResult = Seq.concat [ [| 1; 2; 3 |]; [| 4; 5; 6 |]; [|7; 8; 9|] ]
-Seq.iter ( fun  elem -> printf  "%d "  elem) seq1to10
-printfn  "" 
-Seq.iter ( fun  elem -> printf  "%d "  elem) seqResult
- ```
+
+<pre><span style="color:Green;">// Using Seq.append to append an array to a list. </span>
+<span style="color:Blue;">let</span> seq1to10 = Seq.append [1; 2; 3] [| 4; 5; 6; 7; 8; 9; 10 |]
+<span style="color:Green;">// Using Seq.concat to concatenate a list of arrays. </span>
+<span style="color:Blue;">let</span> seqResult = Seq.concat [ [| 1; 2; 3 |]; [| 4; 5; 6 |]; [|7; 8; 9|] ]
+Seq.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem) seq1to10
+printfn <span style="color:#A31515;">""</span>
+Seq.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem) seqResult
+</pre>
 Output
 ```
 1 2 3 4 5 6 7 8 9 10 
@@ -216,14 +1093,14 @@ Applies a key-generating function to each element of a sequence and return a seq
 : ('T -> 'Key) -> seq<'T> -> seq<'Key * int>
 ```
 Example
-```fsharp
-let  mySeq1 =  seq  { 1.. 100 }
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
- let  seqResult = Seq.countBy ( fun  elem ->
-     if  (elem % 2 = 0)  then  0  else  1) mySeq1
+
+<pre><span style="color:Blue;">let</span> mySeq1 = <span style="color:Blue;">seq</span> { 1.. 100 }
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> seqResult = Seq.countBy (<span style="color:Blue;">fun</span> elem -&gt;
+    <span style="color:Blue;">if</span> (elem % 2 = 0) <span style="color:Blue;">then</span> 0 <span style="color:Blue;">else</span> 1) mySeq1
 
 printSeq seqResult
- ```
+</pre>
 Output
 ```
 (1, 50) (0, 50) 
@@ -238,28 +1115,28 @@ Returns a sequence that is built from the given delayed specification of a seque
 : (unit -> seq<'T>) -> seq<'T>
 ```
 Example
-```fsharp
-// Normally sequences are evaluated lazily.  In this case,  
- // the sequence is created from a list, which is not evaluated  
- // lazily. Therefore, without Seq.delay, the elements would be  
- // evaluated at the time of the call to makeSequence.  
- let  makeSequence function1 maxNumber = Seq.delay ( fun  () ->
-     let   rec  loop n acc =
-        printfn  "Evaluating %d."  n
-         match  n  with 
-        | 0 -> acc
-        | n -> (function1 n) :: loop (n - 1) acc
+
+<pre><span style="color:Green;">// Normally sequences are evaluated lazily.  In this case, </span>
+<span style="color:Green;">// the sequence is created from a list, which is not evaluated </span>
+<span style="color:Green;">// lazily. Therefore, without Seq.delay, the elements would be </span>
+<span style="color:Green;">// evaluated at the time of the call to makeSequence. </span>
+<span style="color:Blue;">let</span> makeSequence function1 maxNumber = Seq.delay (<span style="color:Blue;">fun</span> () -&gt;
+    <span style="color:Blue;">let</span> <span style="color:Blue;">rec</span> loop n acc =
+        printfn <span style="color:#A31515;">"Evaluating %d."</span> n
+        <span style="color:Blue;">match</span> n <span style="color:Blue;">with</span>
+        | 0 -&gt; acc
+        | n -&gt; (function1 n) :: loop (n - 1) acc
     loop maxNumber []
-    |> Seq.ofList)
-printfn  "Calling makeSequence."  
- let  seqSquares = makeSequence ( fun  x -> x * x) 4          
- let  seqCubes = makeSequence ( fun  x -> x * x * x) 4
-printfn  "Printing sequences." 
-printfn  "Squares:" 
-seqSquares |> Seq.iter ( fun  x -> printf  "%d "  x)
-printfn  "\nCubes:" 
-seqCubes |> Seq.iter ( fun  x -> printf  "%d "  x)                       
- ```
+    |&gt; Seq.ofList)
+printfn <span style="color:#A31515;">"Calling makeSequence."</span> 
+<span style="color:Blue;">let</span> seqSquares = makeSequence (<span style="color:Blue;">fun</span> x -&gt; x * x) 4          
+<span style="color:Blue;">let</span> seqCubes = makeSequence (<span style="color:Blue;">fun</span> x -&gt; x * x * x) 4
+printfn <span style="color:#A31515;">"Printing sequences."</span>
+printfn <span style="color:#A31515;">"Squares:"</span>
+seqSquares |&gt; Seq.iter (<span style="color:Blue;">fun</span> x -&gt; printf <span style="color:#A31515;">"%d "</span> x)
+printfn <span style="color:#A31515;">"\nCubes:"</span>
+seqCubes |&gt; Seq.iter (<span style="color:Blue;">fun</span> x -&gt; printf <span style="color:#A31515;">"%d "</span> x)                       
+</pre>
 Output
 ```
 Calling makeSequence.
@@ -288,18 +1165,18 @@ Returns a sequence that contains no duplicate entries according to generic hash 
 : seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  binary n =
-     let   rec  generateBinary n =
-         if  (n / 2 = 0)  then  [n]
-         else  (n % 2) :: generateBinary (n / 2)
-    generateBinary n |> List.rev |> Seq.ofList
 
-printfn  "%A"  (binary 1024)
+<pre><span style="color:Blue;">let</span> binary n =
+    <span style="color:Blue;">let</span> <span style="color:Blue;">rec</span> generateBinary n =
+        <span style="color:Blue;">if</span> (n / 2 = 0) <span style="color:Blue;">then</span> [n]
+        <span style="color:Blue;">else</span> (n % 2) :: generateBinary (n / 2)
+    generateBinary n |&gt; List.rev |&gt; Seq.ofList
 
- let  resultSequence = Seq.distinct (binary 1024)
-printfn  "%A"  resultSequence
- ```
+printfn <span style="color:#A31515;">"%A"</span> (binary 1024)
+
+<span style="color:Blue;">let</span> resultSequence = Seq.distinct (binary 1024)
+printfn <span style="color:#A31515;">"%A"</span> resultSequence
+</pre>
 Output
 ```
 [1; 0; 0; 0; 0; 0; 0; 0; 0; 0; 0]
@@ -314,15 +1191,15 @@ Returns a sequence that contains no duplicate entries according to the generic h
 : ('T -> 'Key) -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  inputSequence = { -5 .. 10 }
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  "" 
-printfn  "Original sequence: " 
+
+<pre><span style="color:Blue;">let</span> inputSequence = { -5 .. 10 }
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span>
+printfn <span style="color:#A31515;">"Original sequence: "</span>
 printSeq inputSequence
-printfn  "\nSequence with distinct absolute values: "  
- let  seqDistinctAbsoluteValue = Seq.distinctBy ( fun  elem -> abs elem) inputSequence
-seqDistinctAbsoluteValue |> printSeq
- ```
+printfn <span style="color:#A31515;">"\nSequence with distinct absolute values: "</span> 
+<span style="color:Blue;">let</span> seqDistinctAbsoluteValue = Seq.distinctBy (<span style="color:Blue;">fun</span> elem -&gt; abs elem) inputSequence
+seqDistinctAbsoluteValue |&gt; printSeq
+</pre>
 Output
 ```
 Original sequence: 
@@ -340,8 +1217,8 @@ Returns the only element of the sequence.
 : seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -355,23 +1232,43 @@ Seq.exactlyOne source
  
 exists
 --------------
+Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .
+```
+: ('T -> bool) -> Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.exists predicate set
+ 
+```
+
+ 
+exists
+--------------
 Tests if any element of the sequence satisfies the given predicate.
 ```
 : ('T -> bool) -> seq<'T> -> bool
 ```
 Example
-```fsharp
-// Use Seq.exists to determine whether there is an element of a sequence  
- // that satisfies a given Boolean expression.  
- // containsNumber returns true if any of the elements of the supplied sequence match   
- // the supplied number.  
- let  containsNumber number seq1 = Seq.exists ( fun  elem -> elem = number) seq1
- let  seq0to3 =  seq  {0 .. 3}
-printfn  "For sequence %A, contains zero is %b"  seq0to3 (containsNumber 0 seq0to3)
- ```
+
+
 Output
 ```
-For sequence seq [0; 1; 2; 3], contains zero is true 
+
+// Signature:
+Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.exists predicate set
+ 
 ```
 
  
@@ -382,18 +1279,18 @@ Tests if any pair of corresponding elements of the input sequences satisfies the
 : ('T1 -> 'T2 -> bool) -> seq<'T1> -> seq<'T2> -> bool
 ```
 Example
-```fsharp
-// Use Seq.exists2 to compare elements in two sequences.  
- // isEqualElement returns true if any elements at the same position in two supplied  
- // sequences match.  
- let  isEqualElement seq1 seq2 = Seq.exists2 ( fun  elem1 elem2 -> elem1 = elem2) seq1 seq2
- let  seq1to5 =  seq  { 1 .. 5 }
- let  seq5to1 =  seq  { 5 .. -1 .. 1 }
- if  (isEqualElement seq1to5 seq5to1)  then 
-    printfn  "Sequences %A and %A have at least one equal element at the same position."  seq1to5 seq5to1
- else 
-    printfn  "Sequences %A and %A do not have any equal elements that are at the same position."  seq1to5 seq5to1
- ```
+
+<pre><span style="color:Green;">// Use Seq.exists2 to compare elements in two sequences. </span>
+<span style="color:Green;">// isEqualElement returns true if any elements at the same position in two supplied </span>
+<span style="color:Green;">// sequences match. </span>
+<span style="color:Blue;">let</span> isEqualElement seq1 seq2 = Seq.exists2 (<span style="color:Blue;">fun</span> elem1 elem2 -&gt; elem1 = elem2) seq1 seq2
+<span style="color:Blue;">let</span> seq1to5 = <span style="color:Blue;">seq</span> { 1 .. 5 }
+<span style="color:Blue;">let</span> seq5to1 = <span style="color:Blue;">seq</span> { 5 .. -1 .. 1 }
+<span style="color:Blue;">if</span> (isEqualElement seq1to5 seq5to1) <span style="color:Blue;">then</span>
+    printfn <span style="color:#A31515;">"Sequences %A and %A have at least one equal element at the same position."</span> seq1to5 seq5to1
+<span style="color:Blue;">else</span>
+    printfn <span style="color:#A31515;">"Sequences %A and %A do not have any equal elements that are at the same position."</span> seq1to5 seq5to1
+</pre>
 Output
 ```
 Sequences seq [1; 2; 3; 4; ...] and seq [5; 4; 3; 2; ...] have at least one equal element at the same position. 
@@ -404,20 +1301,35 @@ filter
 --------------
 Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
 ```
+: ('T -> bool) -> Set<'T> -> Set<'T>
+```
+Example
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
+           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
+printfn <span style="color:#A31515;">"%A"</span> set1
+</pre>
+Output
+```
+set [2; 4; 6; 8; 10] 
+```
+
+ 
+filter
+--------------
+Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
+```
 : ('T -> bool) -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  random =  new  System.Random()
-Seq.initInfinite ( fun  _ -> random.Next())
-|> Seq.filter ( fun  x -> x % 2 = 0)
-|> Seq.take 5
-|> Seq.iter ( fun  elem -> printf  "%d "  elem)
-printfn  "" 
- ```
+
+<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
+           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
+printfn <span style="color:#A31515;">"%A"</span> set1
+</pre>
 Output
 ```
-2140052690 963487404 467169526 1800517368 1225141818 
+set [2; 4; 6; 8; 10] 
 ```
 
  
@@ -428,8 +1340,8 @@ Returns the first element for which the given function returns  true .
 : ('T -> bool) -> seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -443,20 +1355,43 @@ Returns the index of the first element for which the given function returns  tru
 : ('T -> bool) -> seq<'T> -> int
 ```
 Example
-```fsharp
-let  seqA = [| 2 .. 100 |]
- let  delta = 1.0e-10
- let  isPerfectSquare (x: int ) =
-     let  y = sqrt ( float  x)
-    abs(y - round y)  let  isPerfectCube (x: int ) =
-     let  y = System.Math.Pow( float  x, 1.0/3.0)
-    abs(y - round y)  let  element = Seq.find ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) seqA
- let  index = Seq.findIndex ( fun  elem -> isPerfectSquare elem &amp;&amp; isPerfectCube elem) seqA
-printfn  "The first element that is both a square and a cube is %d and its index is %d."  element index
- ```
+
+<pre><span style="color:Blue;">let</span> seqA = [| 2 .. 100 |]
+<span style="color:Blue;">let</span> delta = 1.0e-10
+<span style="color:Blue;">let</span> isPerfectSquare (x:<span style="color:Blue;">int</span>) =
+    <span style="color:Blue;">let</span> y = sqrt (<span style="color:Blue;">float</span> x)
+    abs(y - round y) &lt; delta
+<span style="color:Blue;">let</span> isPerfectCube (x:<span style="color:Blue;">int</span>) =
+    <span style="color:Blue;">let</span> y = System.Math.Pow(<span style="color:Blue;">float</span> x, 1.0/3.0)
+    abs(y - round y) &lt; delta
+<span style="color:Blue;">let</span> element = Seq.find (<span style="color:Blue;">fun</span> elem -&gt; isPerfectSquare elem &amp;&amp; isPerfectCube elem) seqA
+<span style="color:Blue;">let</span> index = Seq.findIndex (<span style="color:Blue;">fun</span> elem -&gt; isPerfectSquare elem &amp;&amp; isPerfectCube elem) seqA
+printfn <span style="color:#A31515;">"The first element that is both a square and a cube is %d and its index is %d."</span> element index
+</pre>
 Output
 ```
 The first element that is both a square and a cube is 64 and its index is 62. 
+```
+
+ 
+fold
+--------------
+Applies the given accumulating function to all the elements of the set
+```
+: ('State -> 'T -> 'State) -> 'State -> Set<'T> -> 'State
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
+
+// Usage:
+Set.fold folder state set
+ 
 ```
 
  
@@ -467,15 +1402,38 @@ Applies a function to each element of the collection, threading an accumulator a
 : ('State -> 'T -> 'State) -> 'State -> seq<'T> -> 'State
 ```
 Example
-```fsharp
-let  sumSeq sequence1 = Seq.fold ( fun  acc elem -> acc + elem) 0 sequence1
-Seq.init 10 ( fun  index -> index * index)
-|> sumSeq
-|> printfn  "The sum of the elements is %d." 
- ```
+
+
 Output
 ```
-The sum of the elements is 285. 
+
+// Signature:
+Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
+
+// Usage:
+Set.fold folder state set
+ 
+```
+
+ 
+forall
+--------------
+Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .
+```
+: ('T -> bool) -> Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.forall predicate set
+ 
 ```
 
  
@@ -486,17 +1444,17 @@ Tests if all elements of the sequence satisfy the given predicate.
 : ('T -> bool) -> seq<'T> -> bool
 ```
 Example
-```fsharp
-// This function can be used on any sequence, so the same function  
- // works with both lists and arrays.  
- let  allPositive coll = Seq.forall ( fun  elem -> elem > 0) coll
-printfn  "%A"  (allPositive [| 0; 1; 2; 3 |])
-printfn  "%A"  (allPositive [ 1; 2; 3 ])
- ```
+
+
 Output
 ```
-false
-true 
+
+// Signature:
+Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
+
+// Usage:
+Set.forall predicate set
+ 
 ```
 
  
@@ -507,13 +1465,13 @@ Tests the all pairs of elements drawn from the two sequences satisfy the given p
 : ('T1 -> 'T2 -> bool) -> seq<'T1> -> seq<'T2> -> bool
 ```
 Example
-```fsharp
-// This function can be used on any sequence, so the same function  
- // works with both lists and arrays.  
- let  allEqual coll = Seq.forall2 ( fun  elem1 elem2 -> elem1 = elem2) coll
-printfn  "%A"  (allEqual [| 1; 2 |] [| 1; 2 |])
-printfn  "%A"  (allEqual [ 1; 2 ] [ 2; 1 ])
- ```
+
+<pre><span style="color:Green;">// This function can be used on any sequence, so the same function </span>
+<span style="color:Green;">// works with both lists and arrays. </span>
+<span style="color:Blue;">let</span> allEqual coll = Seq.forall2 (<span style="color:Blue;">fun</span> elem1 elem2 -&gt; elem1 = elem2) coll
+printfn <span style="color:#A31515;">"%A"</span> (allEqual [| 1; 2 |] [| 1; 2 |])
+printfn <span style="color:#A31515;">"%A"</span> (allEqual [ 1; 2 ] [ 2; 1 ])
+</pre>
 Output
 ```
 true
@@ -528,13 +1486,13 @@ Applies a key-generating function to each element of a sequence and yields a seq
 : ('T -> 'Key) -> seq<'T> -> seq<'Key * seq<'T>>
 ```
 Example
-```fsharp
-let  sequence =  seq  { 1 .. 100 }
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
- let  sequences3 = Seq.groupBy ( fun  index ->
-     if  (index % 2 = 0)  then  0  else  1) sequence
-sequences3 |> printSeq
- ```
+
+<pre><span style="color:Blue;">let</span> sequence = <span style="color:Blue;">seq</span> { 1 .. 100 }
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> sequences3 = Seq.groupBy (<span style="color:Blue;">fun</span> index -&gt;
+    <span style="color:Blue;">if</span> (index % 2 = 0) <span style="color:Blue;">then</span> 0 <span style="color:Blue;">else</span> 1) sequence
+sequences3 |&gt; printSeq
+</pre>
 Output
 ```
 (1, seq [1; 3; 5; 7; ...]) (0, seq [2; 4; 6; 8; ...])  
@@ -548,8 +1506,8 @@ Returns the first element of the sequence.
 : seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -563,10 +1521,10 @@ Generates a new sequence which, when iterated, returns successive elements by ca
 : int -> (int -> 'T) -> seq<'T>
 ```
 Example
-```fsharp
-let  seqFirst5MultiplesOf10 = Seq.init 5 ( fun  n -> n * 10)
-Seq.iter ( fun  elem -> printf  "%d "  elem) seqFirst5MultiplesOf10
- ```
+
+<pre><span style="color:Blue;">let</span> seqFirst5MultiplesOf10 = Seq.init 5 (<span style="color:Blue;">fun</span> n -&gt; n * 10)
+Seq.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem) seqFirst5MultiplesOf10
+</pre>
 Output
 ```
 0 10 20 30 40 
@@ -580,15 +1538,36 @@ Generates a new sequence which, when iterated, will return successive elements b
 : (int -> 'T) -> seq<'T>
 ```
 Example
-```fsharp
-let  seqInfinite = Seq.initInfinite ( fun  index ->
-     let  n =  float ( index + 1 )
-    1.0 / (n * n * ( if  ((index + 1) % 2 = 0)  then  1.0  else  -1.0)))
-printfn  "%A"  seqInfinite
- ```
+
+<pre><span style="color:Blue;">let</span> seqInfinite = Seq.initInfinite (<span style="color:Blue;">fun</span> index -&gt;
+    <span style="color:Blue;">let</span> n = <span style="color:Blue;">float</span>( index + 1 )
+    1.0 / (n * n * (<span style="color:Blue;">if</span> ((index + 1) % 2 = 0) <span style="color:Blue;">then</span> 1.0 <span style="color:Blue;">else</span> -1.0)))
+printfn <span style="color:#A31515;">"%A"</span> seqInfinite
+</pre>
 Output
 ```
 seq [-1.0; 0.25; -0.1111111111; 0.0625; ...] 
+```
+
+ 
+isEmpty
+--------------
+Returns  true  if the set is empty.
+```
+: Set<'T> -> bool
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.isEmpty : Set  -> bool (requires comparison)
+
+// Usage:
+Set.isEmpty set
+ 
 ```
 
  
@@ -599,16 +1578,38 @@ Tests whether a sequence has any elements.
 : seq<'T> -> bool
 ```
 Example
-```fsharp
-let  emptySeq = Seq.empty
- let  nonEmptySeq =  seq  { 1 .. 10 }
-Seq.isEmpty emptySeq |> printfn  "%b" 
-Seq.isEmpty nonEmptySeq |> printfn  "%b" 
- ```
+
+
 Output
 ```
-true
-false 
+
+// Signature:
+Set.isEmpty : Set  -> bool (requires comparison)
+
+// Usage:
+Set.isEmpty set
+ 
+```
+
+ 
+iter
+--------------
+Applies the given function to each element of the set, in order according to the comparison function.
+```
+: ('T -> unit) -> Set<'T> -> unit
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
+
+// Usage:
+Set.iter action set
+ 
 ```
 
  
@@ -619,21 +1620,17 @@ Applies the given function to each element of the collection.
 : ('T -> unit) -> seq<'T> -> unit
 ```
 Example
-```fsharp
-printf  "Seq.iter: " 
-Seq.iter ( fun  (a,b) -> printf  "(%d, %d) "  a b) ( seq  {  for  i  in  1..5 -> (i, i*i) })
- ```
+
+
 Output
 ```
--------Enumeration 1------
-line System.String[]
-line System.String[]
--------Enumeration 2------
-line has 8 entries
-line has 7 entries
--------Enumeration 3------
-lengths of entries: [|7; 0; 6; 0; 6; 5; 0; 1|]
-lengths of entries: [|5; 0; 6; 0; 4; 0; 2|] 
+
+// Signature:
+Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
+
+// Usage:
+Set.iter action set
+ 
 ```
 
  
@@ -644,13 +1641,13 @@ Applies the given function to each element of the collection. The integer passed
 : (int -> 'T -> unit) -> seq<'T> -> unit
 ```
 Example
-```fsharp
-let  seq1 = [1; 2; 3]
- let  seq2 = [4; 5; 6]
-Seq.iter ( fun  x -> printfn  "Seq.iter: element is %d"  x) seq1
-Seq.iteri( fun  i x -> printfn  "Seq.iteri: element %d is %d"  i x) seq1
-Seq.iter2 ( fun  x y -> printfn  "Seq.iter2: elements are %d %d"  x y) seq1 seq2
- ```
+
+<pre><span style="color:Blue;">let</span> seq1 = [1; 2; 3]
+<span style="color:Blue;">let</span> seq2 = [4; 5; 6]
+Seq.iter (<span style="color:Blue;">fun</span> x -&gt; printfn <span style="color:#A31515;">"Seq.iter: element is %d"</span> x) seq1
+Seq.iteri(<span style="color:Blue;">fun</span> i x -&gt; printfn <span style="color:#A31515;">"Seq.iteri: element %d is %d"</span> i x) seq1
+Seq.iter2 (<span style="color:Blue;">fun</span> x y -&gt; printfn <span style="color:#A31515;">"Seq.iter2: elements are %d %d"</span> x y) seq1 seq2
+</pre>
 Output
 ```
 Seq.iter: element is 1
@@ -672,13 +1669,13 @@ Applies the given function to two collections simultaneously. If one sequence is
 : ('T1 -> 'T2 -> unit) -> seq<'T1> -> seq<'T2> -> unit
 ```
 Example
-```fsharp
-let  seq1 = [1; 2; 3]
- let  seq2 = [4; 5; 6]
-Seq.iter ( fun  x -> printfn  "Seq.iter: element is %d"  x) seq1
-Seq.iteri( fun  i x -> printfn  "Seq.iteri: element %d is %d"  i x) seq1
-Seq.iter2 ( fun  x y -> printfn  "Seq.iter2: elements are %d %d"  x y) seq1 seq2
- ```
+
+<pre><span style="color:Blue;">let</span> seq1 = [1; 2; 3]
+<span style="color:Blue;">let</span> seq2 = [4; 5; 6]
+Seq.iter (<span style="color:Blue;">fun</span> x -&gt; printfn <span style="color:#A31515;">"Seq.iter: element is %d"</span> x) seq1
+Seq.iteri(<span style="color:Blue;">fun</span> i x -&gt; printfn <span style="color:#A31515;">"Seq.iteri: element %d is %d"</span> i x) seq1
+Seq.iter2 (<span style="color:Blue;">fun</span> x y -&gt; printfn <span style="color:#A31515;">"Seq.iter2: elements are %d %d"</span> x y) seq1 seq2
+</pre>
 Output
 ```
 Seq.iter: element is 1
@@ -700,8 +1697,8 @@ Returns the last element of the sequence.
 : seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -720,11 +1717,32 @@ Returns the length of the sequence.
 : seq<'T> -> int
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
+```
+
+ 
+map
+--------------
+Returns a new collection containing the results of applying the given function to each element of the input set.
+```
+: ('T -> 'U) -> Set<'T> -> Set<'U>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
+
+// Usage:
+Set.map mapping set
+ 
 ```
 
  
@@ -735,16 +1753,16 @@ Creates a new collection whose elements are the results of applying the given fu
 : ('T -> 'U) -> seq<'T> -> seq<'U>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
 // Signature:
-Seq.map : ('T -> 'U) -> seq  -> seq 
+Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
 
 // Usage:
-Seq.map mapping source
+Set.map mapping set
  
 ```
 
@@ -756,8 +1774,8 @@ Creates a new collection whose elements are the results of applying the given fu
 : (int -> 'T -> 'U) -> seq<'T> -> seq<'U>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -777,8 +1795,8 @@ Creates a new collection whose elements are the results of applying the given fu
 : ('T1 -> 'T2 -> 'U) -> seq<'T1> -> seq<'T2> -> seq<'U>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -798,8 +1816,8 @@ Returns the greatest of all elements of the sequence, compared by using  Operato
 : seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -813,8 +1831,8 @@ Returns the greatest of all elements of the sequence, compared by using  Operato
 : ('T -> 'U) -> seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -834,12 +1852,12 @@ Returns the lowest of all elements of the sequence, compared by using  Operators
 : seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
-module Seq
+module Set
  
 ```
 
@@ -851,8 +1869,8 @@ Returns the lowest of all elements of the sequence, compared by using  Operators
 : ('T -> 'U) -> seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -872,8 +1890,8 @@ Computes the  nth  element in the collection.
 : int -> seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -888,18 +1906,64 @@ Seq.nth index source
  
 ofArray
 --------------
+Creates a set that contains the same elements as the given array.
+```
+: 'T array -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.ofArray : 'T array -> Set  (requires comparison)
+
+// Usage:
+Set.ofArray array
+ 
+```
+
+ 
+ofArray
+--------------
 Views the given array as a sequence.
 ```
 : 'T array -> seq<'T>
 ```
 Example
-```fsharp
-let  seq1 = Array.init 10 ( fun  index -> index.ToString()) 
-           |> Seq.ofArray
- ```
+
+
 Output
 ```
-val seq1 : seq 
+
+// Signature:
+Set.ofArray : 'T array -> Set  (requires comparison)
+
+// Usage:
+Set.ofArray array
+ 
+```
+
+ 
+ofList
+--------------
+Creates a set that contains the same elements as the given list.
+```
+: 'T list -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.ofList : 'T list -> Set  (requires comparison)
+
+// Usage:
+Set.ofList elements
+ 
 ```
 
  
@@ -910,13 +1974,17 @@ Views the given list as a sequence.
 : 'T list -> seq<'T>
 ```
 Example
-```fsharp
-let  seq1 = List.init 10 ( fun  index -> index.ToString())
-           |> Seq.ofList
- ```
+
+
 Output
 ```
-val seq1 : seq  = ["0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"] 
+
+// Signature:
+Set.ofList : 'T list -> Set  (requires comparison)
+
+// Usage:
+Set.ofList elements
+ 
 ```
 
  
@@ -927,15 +1995,15 @@ Returns a sequence of each element in the input sequence and its predecessor, wi
 : seq<'T> -> seq<'T * 'T>
 ```
 Example
-```fsharp
-let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
- let  seqPairwise = Seq.pairwise ( seq  {  for  i  in  1 .. 10 -> i*i })
+
+<pre><span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> seqPairwise = Seq.pairwise (<span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 -&gt; i*i })
 printSeq seqPairwise
 
-printfn  ""  
- let  seqDelta = Seq.map ( fun  elem -> snd elem - fst elem) seqPairwise
+printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> seqDelta = Seq.map (<span style="color:Blue;">fun</span> elem -&gt; snd elem - fst elem) seqPairwise
 printSeq seqDelta
- ```
+</pre>
 Output
 ```
 (1, 4) (4, 9) (9, 16) (16, 25) (25, 36) (36, 49) (49, 64) (64, 81) (81, 100) 
@@ -951,8 +2019,8 @@ Applies the given function to successive elements, returning the first value whe
 : ('T -> 'U option) -> seq<'T> -> 'U
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -972,8 +2040,22 @@ Creates a new sequence object that delegates to the given sequence object. This 
 : seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-```
+
+<pre><span style="color:Blue;">type</span> ArrayContainer(start, finish) =
+    <span style="color:Blue;">let</span> internalArray = [| start .. finish |]
+    <span style="color:Blue;">member</span> this.RangeSeq = Seq.readonly internalArray
+    <span style="color:Blue;">member</span> this.RangeArray = internalArray
+
+<span style="color:Blue;">let</span> newArray = <span style="color:Blue;">new</span> ArrayContainer(1, 10)
+<span style="color:Blue;">let</span> rangeSeq = newArray.RangeSeq
+<span style="color:Blue;">let</span> rangeArray = newArray.RangeArray
+<span style="color:Green;">// These lines produce an error:  </span>
+<span style="color:Green;">//let myArray = rangeSeq :&gt; int array </span>
+<span style="color:Green;">//myArray.[0] &lt;- 0 </span>
+<span style="color:Green;">// The following line does not produce an error.  </span>
+<span style="color:Green;">// It does not preserve encapsulation.</span>
+rangeArray.[0] &lt;- 0
+</pre>
 Output
 ```
 
@@ -987,8 +2069,8 @@ Applies a function to each element of the sequence, threading an accumulator arg
 : ('T -> 'T -> 'T) -> seq<'T> -> 'T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1008,8 +2090,8 @@ Like  Seq.fold , but computes on-demand and returns the sequence of intermediary
 : ('State -> 'T -> 'State) -> 'State -> seq<'T> -> seq<'State>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1024,21 +2106,42 @@ Seq.scan folder state source
  
 singleton
 --------------
+The set containing the given element.
+```
+: 'T -> Set<'T>
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.singleton : 'T -> Set  (requires comparison)
+
+// Usage:
+Set.singleton value
+ 
+```
+
+ 
+singleton
+--------------
 Returns a sequence that yields one item only.
 ```
 : 'T -> seq<'T>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
 // Signature:
-Seq.singleton : 'T -> seq 
+Set.singleton : 'T -> Set  (requires comparison)
 
 // Usage:
-Seq.singleton value
+Set.singleton value
  
 ```
 
@@ -1050,12 +2153,12 @@ Returns a sequence that skips a specified number of elements of the underlying s
 : int -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  mySeq =  seq  {  for  i  in  1 .. 10 -> i*i }
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
- let  mySeqSkipFirst5 = Seq.skip 5 mySeq
-mySeqSkipFirst5 |> printSeq
- ```
+
+<pre><span style="color:Blue;">let</span> mySeq = <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 -&gt; i*i }
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> mySeqSkipFirst5 = Seq.skip 5 mySeq
+mySeqSkipFirst5 |&gt; printSeq
+</pre>
 Output
 ```
 36 49 64 81 100  
@@ -1069,11 +2172,12 @@ Returns a sequence that, when iterated, skips elements of the underlying sequenc
 : ('T -> bool) -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  mySeq =  seq  {  for  i  in  1 .. 10 -> i*i }
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
- let  mySeqSkipWhileLessThan10 = Seq.skipWhile ( fun  elem -> elem   printSeq
- ```
+
+<pre><span style="color:Blue;">let</span> mySeq = <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 -&gt; i*i }
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> mySeqSkipWhileLessThan10 = Seq.skipWhile (<span style="color:Blue;">fun</span> elem -&gt; elem &lt; 10) mySeq
+mySeqSkipWhileLessThan10 |&gt; printSeq
+</pre>
 Output
 ```
 16 25 36 49 64 81 100  
@@ -1087,8 +2191,8 @@ Yields a sequence ordered by keys.
 : seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1102,8 +2206,8 @@ Returns the sum of the elements in the sequence.
 : seq<^T> -> ^T
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1123,8 +2227,8 @@ take
 Returns the sum of the results generated by applying the function to each element of the sequence.
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1144,24 +2248,24 @@ Returns the first elements of the sequence up to a specified count.
 : int -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  mySeq =  seq  {  for  i  in  1 .. 10 -> i*i }
- let  truncatedSeq = Seq.truncate 5 mySeq
- let  takenSeq = Seq.take 5 mySeq
 
- let  truncatedSeq2 = Seq.truncate 20 mySeq
- let  takenSeq2 = Seq.take 20 mySeq
+<pre><span style="color:Blue;">let</span> mySeq = <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 -&gt; i*i }
+<span style="color:Blue;">let</span> truncatedSeq = Seq.truncate 5 mySeq
+<span style="color:Blue;">let</span> takenSeq = Seq.take 5 mySeq
 
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
+<span style="color:Blue;">let</span> truncatedSeq2 = Seq.truncate 20 mySeq
+<span style="color:Blue;">let</span> takenSeq2 = Seq.take 20 mySeq
 
- // Up to this point, the sequences are not evaluated.  
- // The following code causes the sequences to be evaluated. 
-truncatedSeq |> printSeq
-truncatedSeq2 |> printSeq
-takenSeq |> printSeq
- // The following line produces a run-time error (in printSeq): 
-takenSeq2 |> printSeq
- ```
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+
+<span style="color:Green;">// Up to this point, the sequences are not evaluated. </span>
+<span style="color:Green;">// The following code causes the sequences to be evaluated.</span>
+truncatedSeq |&gt; printSeq
+truncatedSeq2 |&gt; printSeq
+takenSeq |&gt; printSeq
+<span style="color:Green;">// The following line produces a run-time error (in printSeq):</span>
+takenSeq2 |&gt; printSeq
+</pre>
 Output
 ```
 1 4 9 16 25 
@@ -1178,14 +2282,36 @@ Returns a sequence that, when iterated, yields elements of the underlying sequen
 : ('T -> bool) -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  mySeq =  seq  {  for  i  in  1 .. 10 -> i*i }
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
- let  mySeqLessThan10 = Seq.takeWhile ( fun  elem -> elem   printSeq
- ```
+
+<pre><span style="color:Blue;">let</span> mySeq = <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 -&gt; i*i }
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+<span style="color:Blue;">let</span> mySeqLessThan10 = Seq.takeWhile (<span style="color:Blue;">fun</span> elem -&gt; elem &lt; 10) mySeq
+mySeqLessThan10 |&gt; printSeq
+</pre>
 Output
 ```
 1 4 9 
+```
+
+ 
+toArray
+--------------
+Creates an array that contains the elements of the set in order.
+```
+: Set<'T> -> 'T array
+```
+Example
+
+
+Output
+```
+
+// Signature:
+Set.toArray : Set  -> 'T array (requires comparison)
+
+// Usage:
+Set.toArray set
+ 
 ```
 
  
@@ -1196,16 +2322,16 @@ Creates an array from the given collection.
 : seq<'T> -> 'T []
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
 // Signature:
-Seq.toArray : seq  -> 'T array
+Set.toArray : Set  -> 'T array (requires comparison)
 
 // Usage:
-Seq.toArray source
+Set.toArray set
  
 ```
 
@@ -1217,16 +2343,16 @@ Creates a list from the given collection.
 : seq<'T> -> 'T list
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
 // Signature:
-Seq.toList : seq  -> 'T list
+Set.toList : Set  -> 'T list (requires comparison)
 
 // Usage:
-Seq.toList source
+Set.toList set
  
 ```
 
@@ -1238,8 +2364,8 @@ Returns the first element for which the given function returns  true , or  None 
 : ('T -> bool) -> seq<'T> -> 'T option
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1259,8 +2385,8 @@ Returns the index of the first element in the sequence that satisfies the given 
 : ('T -> bool) -> seq<'T> -> int option
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1280,8 +2406,8 @@ Applies the given function to successive elements, returning the first value whe
 : ('T -> 'U option) -> seq<'T> -> 'U option
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1301,24 +2427,24 @@ Returns a sequence that when enumerated returns no more than a specified number 
 : int -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-let  mySeq =  seq  {  for  i  in  1 .. 10 -> i*i }
- let  truncatedSeq = Seq.truncate 5 mySeq
- let  takenSeq = Seq.take 5 mySeq
 
- let  truncatedSeq2 = Seq.truncate 20 mySeq
- let  takenSeq2 = Seq.take 20 mySeq
+<pre><span style="color:Blue;">let</span> mySeq = <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 10 -&gt; i*i }
+<span style="color:Blue;">let</span> truncatedSeq = Seq.truncate 5 mySeq
+<span style="color:Blue;">let</span> takenSeq = Seq.take 5 mySeq
 
- let  printSeq seq1 = Seq.iter (printf  "%A " ) seq1; printfn  ""  
+<span style="color:Blue;">let</span> truncatedSeq2 = Seq.truncate 20 mySeq
+<span style="color:Blue;">let</span> takenSeq2 = Seq.take 20 mySeq
 
- // Up to this point, the sequences are not evaluated.  
- // The following code causes the sequences to be evaluated. 
-truncatedSeq |> printSeq
-truncatedSeq2 |> printSeq
-takenSeq |> printSeq
- // The following line produces a run-time error (in printSeq): 
-takenSeq2 |> printSeq
- ```
+<span style="color:Blue;">let</span> printSeq seq1 = Seq.iter (printf <span style="color:#A31515;">"%A "</span>) seq1; printfn <span style="color:#A31515;">""</span> 
+
+<span style="color:Green;">// Up to this point, the sequences are not evaluated. </span>
+<span style="color:Green;">// The following code causes the sequences to be evaluated.</span>
+truncatedSeq |&gt; printSeq
+truncatedSeq2 |&gt; printSeq
+takenSeq |&gt; printSeq
+<span style="color:Green;">// The following line produces a run-time error (in printSeq):</span>
+takenSeq2 |&gt; printSeq
+</pre>
 Output
 ```
 1 4 9 16 25 
@@ -1335,16 +2461,16 @@ Returns a sequence that contains the elements generated by the given computation
 : ('State -> 'T * 'State option) -> 'State -> seq<'T>
 ```
 Example
-```fsharp
-let  seq1 = Seq.unfold ( fun  state ->  if  (state > 20)  then  None  else  Some(state, state + 1)) 0
-printfn  "The sequence seq1 contains numbers from 0 to 20."  
- for  x  in  seq1  do  printf  "%d "  x
- let  fib = Seq.unfold ( fun  state ->
-     if  (snd state > 1000)  then  None
-     else  Some(fst state + snd state, (snd state, fst state + snd state))) (1,1)
-printfn  "\nThe sequence fib contains Fibonacci numbers."  
- for  x  in  fib  do  printf  "%d "  x
- ```
+
+<pre><span style="color:Blue;">let</span> seq1 = Seq.unfold (<span style="color:Blue;">fun</span> state -&gt; <span style="color:Blue;">if</span> (state &gt; 20) <span style="color:Blue;">then</span> None <span style="color:Blue;">else</span> Some(state, state + 1)) 0
+printfn <span style="color:#A31515;">"The sequence seq1 contains numbers from 0 to 20."</span> 
+<span style="color:Blue;">for</span> x <span style="color:Blue;">in</span> seq1 <span style="color:Blue;">do</span> printf <span style="color:#A31515;">"%d "</span> x
+<span style="color:Blue;">let</span> fib = Seq.unfold (<span style="color:Blue;">fun</span> state -&gt;
+    <span style="color:Blue;">if</span> (snd state &gt; 1000) <span style="color:Blue;">then</span> None
+    <span style="color:Blue;">else</span> Some(fst state + snd state, (snd state, fst state + snd state))) (1,1)
+printfn <span style="color:#A31515;">"\nThe sequence fib contains Fibonacci numbers."</span> 
+<span style="color:Blue;">for</span> x <span style="color:Blue;">in</span> fib <span style="color:Blue;">do</span> printf <span style="color:#A31515;">"%d "</span> x
+</pre>
 Output
 ```
 The sequence seq1 contains numbers from 0 to 20.
@@ -1361,8 +2487,8 @@ Returns a new collection containing only the elements of the collection for whic
 : ('T -> bool) -> seq<'T> -> seq<'T>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1381,17 +2507,17 @@ Returns a sequence that yields sliding windows of containing elements drawn from
 : int -> seq<'T> -> seq<'T []>
 ```
 Example
-```fsharp
-let  seqNumbers = [ 1.0; 1.5; 2.0; 1.5; 1.0; 1.5 ] :>  seq float >
- let  seqWindows = Seq.windowed 3 seqNumbers
- let  seqMovingAverage = Seq.map Array.average seqWindows
-printfn  "Initial sequence: " 
+
+<pre><span style="color:Blue;">let</span> seqNumbers = [ 1.0; 1.5; 2.0; 1.5; 1.0; 1.5 ] :&gt; <span style="color:Blue;">seq</span>&lt;<span style="color:Blue;">float</span>&gt;
+<span style="color:Blue;">let</span> seqWindows = Seq.windowed 3 seqNumbers
+<span style="color:Blue;">let</span> seqMovingAverage = Seq.map Array.average seqWindows
+printfn <span style="color:#A31515;">"Initial sequence: "</span>
 printSeq seqNumbers
-printfn  "\nWindows of length 3: " 
+printfn <span style="color:#A31515;">"\nWindows of length 3: "</span>
 printSeq seqWindows
-printfn  "\nMoving average: " 
+printfn <span style="color:#A31515;">"\nMoving average: "</span>
 printSeq seqMovingAverage
- ```
+</pre>
 Output
 ```
 Initial sequence: 
@@ -1412,8 +2538,8 @@ Combines the two sequences into a list of pairs. The two sequences need not have
 : seq<'T1> -> seq<'T2> -> seq<'T1 * 'T2>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
@@ -1433,8 +2559,8 @@ Combines the three sequences into a list of triples. The sequences need not have
 : seq<'T1> -> seq<'T2> -> seq<'T3> -> seq<'T1 * 'T2 * 'T3>
 ```
 Example
-```fsharp
-```
+
+
 Output
 ```
 
