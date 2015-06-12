@@ -65,12 +65,13 @@ Returns a new set with the elements of the second set removed from the first.
 : Set<'T> -> Set<'T> -> Set<'T>
 ```
 Example
-
+<code>
 <pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
 <span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ]
 <span style="color:Blue;">let</span> setDiff = Set.difference set2 set1
 printfn <span style="color:#A31515;">"Set.difference [2 .. 6] [1 .. 3] yields %A"</span> setDiff
 </pre>
+<code>
 Output
 ```
 Set.difference [2 .. 6] [1 .. 3] yields set [4; 5; 6] 
