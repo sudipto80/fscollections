@@ -1,885 +1,6 @@
 
 
 
-add
---------------
-Returns a new set with an element added to the set. No exception is raised if the set already contains the given element.
-```
-: 'T -> Set<'T> -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.add : 'T -> Set  -> Set  (requires comparison)
-
-// Usage:
-Set.add value set
- 
-```
-
- 
-contains
---------------
-Evaluates to  true  if the given element is in the given set.
-```
-: 'T -> Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.contains : 'T -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.contains element set
- 
-```
-
- 
-count
---------------
-Returns the number of elements in the set.
-```
-: Set<'T> -> int
-```
-Example
-
-
-Output
-```
-
-```
-
- 
-difference
---------------
-Returns a new set with the elements of the second set removed from the first.
-```
-: Set<'T> -> Set<'T> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ]
-<span style="color:Blue;">let</span> setDiff = Set.difference set2 set1
-printfn <span style="color:#A31515;">"Set.difference [2 .. 6] [1 .. 3] yields %A"</span> setDiff
-</pre>
-Output
-```
-Set.difference [2 .. 6] [1 .. 3] yields set [4; 5; 6] 
-```
-
- 
-exists
---------------
-Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .
-```
-: ('T -> bool) -> Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.exists predicate set
- 
-```
-
- 
-exists
---------------
-Tests if any element of the sequence satisfies the given predicate.
-```
-: ('T -> bool) -> seq<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.exists predicate set
- 
-```
-
- 
-filter
---------------
-Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
-```
-: ('T -> bool) -> Set<'T> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
-           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
-printfn <span style="color:#A31515;">"%A"</span> set1
-</pre>
-Output
-```
-set [2; 4; 6; 8; 10] 
-```
-
- 
-filter
---------------
-Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
-```
-: ('T -> bool) -> seq<'T> -> seq<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
-           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
-printfn <span style="color:#A31515;">"%A"</span> set1
-</pre>
-Output
-```
-set [2; 4; 6; 8; 10] 
-```
-
- 
-fold
---------------
-Applies the given accumulating function to all the elements of the set
-```
-: ('State -> 'T -> 'State) -> 'State -> Set<'T> -> 'State
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
-
-// Usage:
-Set.fold folder state set
- 
-```
-
- 
-fold
---------------
-Applies a function to each element of the collection, threading an accumulator argument through the computation. If the input function is  f  and the elements are  i0...iN,  then this function computes  f (... (f s i0)...) iN .
-```
-: ('State -> 'T -> 'State) -> 'State -> seq<'T> -> 'State
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
-
-// Usage:
-Set.fold folder state set
- 
-```
-
- 
-foldBack
---------------
-Applies the given accumulating function to all the elements of the set.
-```
-: ('T -> 'State -> 'State) -> Set<'T> -> 'State -> 'State
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.foldBack : ('T -> 'State -> 'State) -> Set  -> 'State -> 'State (requires comparison)
-
-// Usage:
-Set.foldBack folder set state
- 
-```
-
- 
-forall
---------------
-Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .
-```
-: ('T -> bool) -> Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.forall predicate set
- 
-```
-
- 
-forall
---------------
-Tests if all elements of the sequence satisfy the given predicate.
-```
-: ('T -> bool) -> seq<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.forall predicate set
- 
-```
-
- 
-intersect
---------------
-Computes the intersection of the two sets.
-```
-: Set<'T> -> Set<'T> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 3 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 2 .. 6 ] 
-<span style="color:Blue;">let</span> setIntersect = Set.intersect set1 set2
-printfn <span style="color:#A31515;">"Set.intersect [1 .. 3] [2 .. 6] yields %A"</span> setIntersect
-</pre>
-Output
-```
-Set.intersect [1 .. 3] [2 .. 6] yields set [2; 3] 
-```
-
- 
-intersectMany
---------------
-Computes the intersection of a sequence of sets. The sequence must be non-empty.
-```
-: seq<Set<'T>> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> seqOfSets =
-    <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1 .. 9 <span style="color:Blue;">do</span> <span style="color:Blue;">yield</span> Set.ofList [ i .. i .. 10000 ] }  
-<span style="color:Blue;">let</span> setResult = Set.intersectMany seqOfSets
-printfn <span style="color:#A31515;">"Numbers between 1 and 10,000 that are divisible by "</span>
-printfn <span style="color:#A31515;">"all the numbers from 1 to 9:"</span>
-printfn <span style="color:#A31515;">"%A"</span> setResult
-</pre>
-Output
-```
-Numbers between 1 and 10,000 that are divisible by 
-all the numbers from 1 to 9:
-set [2520; 5040; 7560] 
-```
-
- 
-isEmpty
---------------
-Returns  true  if the set is empty.
-```
-: Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.isEmpty : Set  -> bool (requires comparison)
-
-// Usage:
-Set.isEmpty set
- 
-```
-
- 
-isEmpty
---------------
-Tests whether a sequence has any elements.
-```
-: seq<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.isEmpty : Set  -> bool (requires comparison)
-
-// Usage:
-Set.isEmpty set
- 
-```
-
- 
-isProperSubset
---------------
-Evaluates to  true  if all elements of the first set are in the second, and at least one element of the second is not in the first.
-```
-: Set<'T> -> Set<'T> -> bool
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 5 ]
-<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
-printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set2 set1 (Set.isProperSubset set2 set1)
-printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set3 set1 (Set.isProperSubset set3 set1) 
-printfn <span style="color:#A31515;">"%A is a proper subset of %A: %b"</span> set4 set1 (Set.isProperSubset set4 set1) 
-</pre>
-Output
-```
-set [1; 2; 3; 4; 5] is a proper subset of set [1; 2; 3; 4; 5; 6]: true
-set [1; 2; 3; 4; 5; 6] is a proper subset of set [1; 2; 3; 4; 5; 6]: false
-set [5; 6; 7; 8; 9; 10] is a proper subset of set [1; 2; 3; 4; 5; 6]: false 
-```
-
- 
-isProperSuperset
---------------
-Evaluates to  true  if all elements of the second set are in the first, and at least one element of the first is not in the second.
-```
-: Set<'T> -> Set<'T> -> bool
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 9 ]
-<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
-printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set2 set1 (Set.isProperSuperset set2 set1)
-printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set3 set1 (Set.isProperSuperset set3 set1) 
-printfn <span style="color:#A31515;">"%A is a proper superset of %A: %b"</span> set4 set1 (Set.isProperSuperset set4 set1) 
-</pre>
-Output
-```
-set [1; 2; 3; 4; 5; 6; 7; 8; 9] is a proper superset of set [1; 2; 3; 4; 5; 6]: true
-set [1; 2; 3; 4; 5; 6] is a proper superset of set [1; 2; 3; 4; 5; 6]: false
-set [5; 6; 7; 8; 9; 10] is a proper superset of set [1; 2; 3; 4; 5; 6]: false 
-```
-
- 
-isSubset
---------------
-Evaluates to  true  if all elements of the first set are in the second
-```
-: Set<'T> -> Set<'T> -> bool
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 5 ]
-<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
-printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set2 set1 (Set.isSubset set2 set1)
-printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set3 set1 (Set.isSubset set3 set1) 
-printfn <span style="color:#A31515;">"%A is a subset of %A: %b"</span> set4 set1 (Set.isSubset set4 set1) 
-</pre>
-Output
-```
-set [1; 2; 3; 4; 5] is a subset of set [1; 2; 3; 4; 5; 6]: true
-set [1; 2; 3; 4; 5; 6] is a subset of set [1; 2; 3; 4; 5; 6]: true
-set [5; 6; 7; 8; 9; 10] is a subset of set [1; 2; 3; 4; 5; 6]: false 
-```
-
- 
-isSuperset
---------------
-Evaluates to  true  if all elements of the second set are in the first.
-```
-: Set<'T> -> Set<'T> -> bool
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 9 ]
-<span style="color:Blue;">let</span> set3 = Set.ofList [ 1 .. 6 ]
-<span style="color:Blue;">let</span> set4 = Set.ofList [ 5 .. 10 ]
-printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set2 set1 (Set.isSuperset set2 set1)
-printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set3 set1 (Set.isSuperset set3 set1) 
-printfn <span style="color:#A31515;">"%A is a superset of %A: %b"</span> set4 set1 (Set.isSuperset set4 set1) 
-</pre>
-Output
-```
-set [1; 2; 3; 4; 5; 6; 7; 8; 9] is a superset of set [1; 2; 3; 4; 5; 6]: true
-set [1; 2; 3; 4; 5; 6] is a superset of set [1; 2; 3; 4; 5; 6]: true
-set [5; 6; 7; 8; 9; 10] is a superset of set [1; 2; 3; 4; 5; 6]: false 
-```
-
- 
-iter
---------------
-Applies the given function to each element of the set, in order according to the comparison function.
-```
-: ('T -> unit) -> Set<'T> -> unit
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
-
-// Usage:
-Set.iter action set
- 
-```
-
- 
-iter
---------------
-Applies the given function to each element of the collection.
-```
-: ('T -> unit) -> seq<'T> -> unit
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
-
-// Usage:
-Set.iter action set
- 
-```
-
- 
-map
---------------
-Returns a new collection containing the results of applying the given function to each element of the input set.
-```
-: ('T -> 'U) -> Set<'T> -> Set<'U>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
-
-// Usage:
-Set.map mapping set
- 
-```
-
- 
-map
---------------
-Creates a new collection whose elements are the results of applying the given function to each of the elements of the collection. The given function will be applied as elements are demanded using the  MoveNext  method on enumerators retrieved from the object.
-```
-: ('T -> 'U) -> seq<'T> -> seq<'U>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
-
-// Usage:
-Set.map mapping set
- 
-```
-
- 
-maxElement
---------------
-Returns the highest element in the set according to the ordering being used for the set.
-```
-: Set<'T> -> 'T
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.maxElement : Set  -> 'T (requires comparison)
-
-// Usage:
-Set.maxElement set
- 
-```
-
- 
-minElement
---------------
-Returns the lowest element in the set according to the ordering being used for the set.
-```
-: Set<'T> -> 'T
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.minElement : Set  -> 'T (requires comparison)
-
-// Usage:
-Set.minElement set
- 
-```
-
- 
-ofArray
---------------
-Creates a set that contains the same elements as the given array.
-```
-: 'T array -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.ofArray : 'T array -> Set  (requires comparison)
-
-// Usage:
-Set.ofArray array
- 
-```
-
- 
-ofArray
---------------
-Views the given array as a sequence.
-```
-: 'T array -> seq<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.ofArray : 'T array -> Set  (requires comparison)
-
-// Usage:
-Set.ofArray array
- 
-```
-
- 
-ofList
---------------
-Creates a set that contains the same elements as the given list.
-```
-: 'T list -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.ofList : 'T list -> Set  (requires comparison)
-
-// Usage:
-Set.ofList elements
- 
-```
-
- 
-ofList
---------------
-Views the given list as a sequence.
-```
-: 'T list -> seq<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.ofList : 'T list -> Set  (requires comparison)
-
-// Usage:
-Set.ofList elements
- 
-```
-
- 
-ofSeq
---------------
-Creates a new collection from the given enumerable object.
-```
-: seq<'T> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> data = <span style="color:#A31515;">"The quick brown fox jumps over the lazy dog"</span>  
-<span style="color:Blue;">let</span> set = 
-    data.ToCharArray()
-    |&gt; Set.ofSeq
-<span style="color:Blue;">for</span> c <span style="color:Blue;">in</span> set <span style="color:Blue;">do</span> 
-    printf <span style="color:#A31515;">"'%c' "</span> c 
-printfn <span style="color:#A31515;">""</span>
-</pre>
-Output
-```
-' ' 'T' 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j' 'k' 'l' 'm' 'n' 'o' 'p' 'q' 'r' 's' 't' 'u' 'v' 'w' 'x' 'y' 'z'  
-```
-
- 
-partition
---------------
-Splits the set into two sets containing the elements for which the given predicate returns true and false respectively.
-```
-: ('T -> bool) -> Set<'T> -> Set<'T> * Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.partition : ('T -> bool) -> Set  -> Set  * Set  (requires comparison)
-
-// Usage:
-Set.partition predicate set
- 
-```
-
- 
-remove
---------------
-Returns a new set with the given element removed. No exception is raised if the set doesn't contain the given element.
-```
-: 'T -> Set<'T> -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.remove : 'T -> Set  -> Set  (requires comparison)
-
-// Usage:
-Set.remove value set
- 
-```
-
- 
-singleton
---------------
-The set containing the given element.
-```
-: 'T -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.singleton : 'T -> Set  (requires comparison)
-
-// Usage:
-Set.singleton value
- 
-```
-
- 
-singleton
---------------
-Returns a sequence that yields one item only.
-```
-: 'T -> seq<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.singleton : 'T -> Set  (requires comparison)
-
-// Usage:
-Set.singleton value
- 
-```
-
- 
-toArray
---------------
-Creates an array that contains the elements of the set in order.
-```
-: Set<'T> -> 'T array
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.toArray : Set  -> 'T array (requires comparison)
-
-// Usage:
-Set.toArray set
- 
-```
-
- 
-toArray
---------------
-Creates an array from the given collection.
-```
-: seq<'T> -> 'T []
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.toArray : Set  -> 'T array (requires comparison)
-
-// Usage:
-Set.toArray set
- 
-```
-
- 
-toList
---------------
-Creates a list from the given collection.
-```
-: seq<'T> -> 'T list
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.toList : Set  -> 'T list (requires comparison)
-
-// Usage:
-Set.toList set
- 
-```
-
- 
-toSeq
---------------
-Returns an ordered view of the collection as an enumerable object.
-```
-: Set<'T> -> seq<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.toSeq : Set  -> seq  (requires comparison)
-
-// Usage:
-Set.toSeq set
- 
-```
-
- 
-union
---------------
-Computes the union of the two sets.
-```
-: Set<'T> -> Set<'T> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 2 .. 2 .. 8 ]
-<span style="color:Blue;">let</span> set2 = Set.ofList [ 1 .. 2 .. 9 ]
-<span style="color:Blue;">let</span> set3 = Set.union set1 set2
-printfn <span style="color:#A31515;">"%A union %A yields %A"</span> set1 set2 set3
-</pre>
-Output
-```
-set [2; 4; 6; 8] union set [1; 3; 5; 7; 9] yields set [1; 2; 3; 4; 5; 6; 7; 8; 9] 
-```
-
- 
-unionMany
---------------
-Computes the union of a sequence of sets.
-```
-: seq<Set<'T>> -> Set<'T>
-```
-Example
-
-<pre>    <span style="color:Blue;">let</span> seqOfSets =
-        <span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 2 .. 5 <span style="color:Blue;">do</span> <span style="color:Blue;">yield</span> Set.ofList [ i .. i .. 40 ] }  
-    <span style="color:Blue;">let</span> setResult = Set.unionMany seqOfSets
-    printfn <span style="color:#A31515;">"Numbers up to 40 that are multiples of numbers from 2 to 5:"</span>
-    Set.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem) setResult
-</pre>
-Output
-```
-Numbers up to 40 that are multiples of numbers from 2 to 5:
-2 3 4 5 6 8 9 10 12 14 15 16 18 20 21 22 24 25 26 27 28 30 32 33 34 35 36 38 39 40  
-```
-
- 
 append
 --------------
 Wraps the two given enumerations as a single concatenated enumeration.
@@ -1026,10 +147,17 @@ Applies the given function to each element of the sequence and concatenates all 
 ```
 Example
 
-
+<pre><span style="color:Blue;">let</span> addNegations seq1 =
+   Seq.collect (<span style="color:Blue;">fun</span> x -&gt; <span style="color:Blue;">seq</span> { <span style="color:Blue;">yield</span> x; <span style="color:Blue;">yield</span> -x }) seq1
+   |&gt; Seq.sort
+addNegations [ 1 .. 4 ] |&gt; Seq.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem)
+printfn <span style="color:#A31515;">""</span>
+addNegations [| 0; -4; 2; -12 |] |&gt; Seq.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem)
+</pre>
 Output
 ```
-
+-4 -3 -2 -1 1 2 3 4 
+-12 -4 -2 0 0 2 4 12 
 ```
 
  
@@ -1232,43 +360,23 @@ Seq.exactlyOne source
  
 exists
 --------------
-Tests if any element of the collection satisfies the given predicate. If the input function is  predicate  and the elements are  i0...iN , then this function computes  predicate i0 or ... or predicate iN .
-```
-: ('T -> bool) -> Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.exists predicate set
- 
-```
-
- 
-exists
---------------
 Tests if any element of the sequence satisfies the given predicate.
 ```
 : ('T -> bool) -> seq<'T> -> bool
 ```
 Example
 
-
+<pre><span style="color:Green;">// Use Seq.exists to determine whether there is an element of a sequence </span>
+<span style="color:Green;">// that satisfies a given Boolean expression. </span>
+<span style="color:Green;">// containsNumber returns true if any of the elements of the supplied sequence match  </span>
+<span style="color:Green;">// the supplied number. </span>
+<span style="color:Blue;">let</span> containsNumber number seq1 = Seq.exists (<span style="color:Blue;">fun</span> elem -&gt; elem = number) seq1
+<span style="color:Blue;">let</span> seq0to3 = <span style="color:Blue;">seq</span> {0 .. 3}
+printfn <span style="color:#A31515;">"For sequence %A, contains zero is %b"</span> seq0to3 (containsNumber 0 seq0to3)
+</pre>
 Output
 ```
-
-// Signature:
-Set.exists : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.exists predicate set
- 
+For sequence seq [0; 1; 2; 3], contains zero is true 
 ```
 
  
@@ -1301,35 +409,20 @@ filter
 --------------
 Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
 ```
-: ('T -> bool) -> Set<'T> -> Set<'T>
-```
-Example
-
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
-           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
-printfn <span style="color:#A31515;">"%A"</span> set1
-</pre>
-Output
-```
-set [2; 4; 6; 8; 10] 
-```
-
- 
-filter
---------------
-Returns a new collection containing only the elements of the collection for which the given predicate returns  true .
-```
 : ('T -> bool) -> seq<'T> -> seq<'T>
 ```
 Example
 
-<pre><span style="color:Blue;">let</span> set1 = Set.ofList [ 1 .. 10]
-           |&gt; Set.filter (<span style="color:Blue;">fun</span> elem -&gt; elem % 2 = 0)
-printfn <span style="color:#A31515;">"%A"</span> set1
+<pre><span style="color:Blue;">let</span> random = <span style="color:Blue;">new</span> System.Random()
+Seq.initInfinite (<span style="color:Blue;">fun</span> _ -&gt; random.Next())
+|&gt; Seq.filter (<span style="color:Blue;">fun</span> x -&gt; x % 2 = 0)
+|&gt; Seq.take 5
+|&gt; Seq.iter (<span style="color:Blue;">fun</span> elem -&gt; printf <span style="color:#A31515;">"%d "</span> elem)
+printfn <span style="color:#A31515;">""</span>
 </pre>
 Output
 ```
-set [2; 4; 6; 8; 10] 
+2140052690 963487404 467169526 1800517368 1225141818 
 ```
 
  
@@ -1376,64 +469,20 @@ The first element that is both a square and a cube is 64 and its index is 62.
  
 fold
 --------------
-Applies the given accumulating function to all the elements of the set
-```
-: ('State -> 'T -> 'State) -> 'State -> Set<'T> -> 'State
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
-
-// Usage:
-Set.fold folder state set
- 
-```
-
- 
-fold
---------------
 Applies a function to each element of the collection, threading an accumulator argument through the computation. If the input function is  f  and the elements are  i0...iN,  then this function computes  f (... (f s i0)...) iN .
 ```
 : ('State -> 'T -> 'State) -> 'State -> seq<'T> -> 'State
 ```
 Example
 
-
+<pre><span style="color:Blue;">let</span> sumSeq sequence1 = Seq.fold (<span style="color:Blue;">fun</span> acc elem -&gt; acc + elem) 0 sequence1
+Seq.init 10 (<span style="color:Blue;">fun</span> index -&gt; index * index)
+|&gt; sumSeq
+|&gt; printfn <span style="color:#A31515;">"The sum of the elements is %d."</span>
+</pre>
 Output
 ```
-
-// Signature:
-Set.fold : ('State -> 'T -> 'State) -> 'State -> Set  -> 'State (requires comparison)
-
-// Usage:
-Set.fold folder state set
- 
-```
-
- 
-forall
---------------
-Tests if all elements of the collection satisfy the given predicate. If the input function is  p  and the elements are  i0...iN,  then this function computes  p i0 &amp;&amp; ... &amp;&amp; p iN .
-```
-: ('T -> bool) -> Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.forall predicate set
- 
+The sum of the elements is 285. 
 ```
 
  
@@ -1445,16 +494,16 @@ Tests if all elements of the sequence satisfy the given predicate.
 ```
 Example
 
-
+<pre><span style="color:Green;">// This function can be used on any sequence, so the same function </span>
+<span style="color:Green;">// works with both lists and arrays. </span>
+<span style="color:Blue;">let</span> allPositive coll = Seq.forall (<span style="color:Blue;">fun</span> elem -&gt; elem &gt; 0) coll
+printfn <span style="color:#A31515;">"%A"</span> (allPositive [| 0; 1; 2; 3 |])
+printfn <span style="color:#A31515;">"%A"</span> (allPositive [ 1; 2; 3 ])
+</pre>
 Output
 ```
-
-// Signature:
-Set.forall : ('T -> bool) -> Set  -> bool (requires comparison)
-
-// Usage:
-Set.forall predicate set
- 
+false
+true 
 ```
 
  
@@ -1552,64 +601,21 @@ seq [-1.0; 0.25; -0.1111111111; 0.0625; ...]
  
 isEmpty
 --------------
-Returns  true  if the set is empty.
-```
-: Set<'T> -> bool
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.isEmpty : Set  -> bool (requires comparison)
-
-// Usage:
-Set.isEmpty set
- 
-```
-
- 
-isEmpty
---------------
 Tests whether a sequence has any elements.
 ```
 : seq<'T> -> bool
 ```
 Example
 
-
+<pre><span style="color:Blue;">let</span> emptySeq = Seq.empty
+<span style="color:Blue;">let</span> nonEmptySeq = <span style="color:Blue;">seq</span> { 1 .. 10 }
+Seq.isEmpty emptySeq |&gt; printfn <span style="color:#A31515;">"%b"</span>
+Seq.isEmpty nonEmptySeq |&gt; printfn <span style="color:#A31515;">"%b"</span>
+</pre>
 Output
 ```
-
-// Signature:
-Set.isEmpty : Set  -> bool (requires comparison)
-
-// Usage:
-Set.isEmpty set
- 
-```
-
- 
-iter
---------------
-Applies the given function to each element of the set, in order according to the comparison function.
-```
-: ('T -> unit) -> Set<'T> -> unit
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
-
-// Usage:
-Set.iter action set
- 
+true
+false 
 ```
 
  
@@ -1621,16 +627,20 @@ Applies the given function to each element of the collection.
 ```
 Example
 
-
+<pre>printf <span style="color:#A31515;">"Seq.iter: "</span>
+Seq.iter (<span style="color:Blue;">fun</span> (a,b) -&gt; printf <span style="color:#A31515;">"(%d, %d) "</span> a b) (<span style="color:Blue;">seq</span> { <span style="color:Blue;">for</span> i <span style="color:Blue;">in</span> 1..5 -&gt; (i, i*i) })
+</pre>
 Output
 ```
-
-// Signature:
-Set.iter : ('T -> unit) -> Set  -> unit (requires comparison)
-
-// Usage:
-Set.iter action set
- 
+-------Enumeration 1------
+line System.String[]
+line System.String[]
+-------Enumeration 2------
+line has 8 entries
+line has 7 entries
+-------Enumeration 3------
+lengths of entries: [|7; 0; 6; 0; 6; 5; 0; 1|]
+lengths of entries: [|5; 0; 6; 0; 4; 0; 2|] 
 ```
 
  
@@ -1727,27 +737,6 @@ Output
  
 map
 --------------
-Returns a new collection containing the results of applying the given function to each element of the input set.
-```
-: ('T -> 'U) -> Set<'T> -> Set<'U>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
-
-// Usage:
-Set.map mapping set
- 
-```
-
- 
-map
---------------
 Creates a new collection whose elements are the results of applying the given function to each of the elements of the collection. The given function will be applied as elements are demanded using the  MoveNext  method on enumerators retrieved from the object.
 ```
 : ('T -> 'U) -> seq<'T> -> seq<'U>
@@ -1759,10 +748,10 @@ Output
 ```
 
 // Signature:
-Set.map : ('T -> 'U) -> Set  -> Set  (requires comparison and comparison)
+Seq.map : ('T -> 'U) -> seq  -> seq 
 
 // Usage:
-Set.map mapping set
+Seq.map mapping source
  
 ```
 
@@ -1857,7 +846,7 @@ Example
 Output
 ```
 
-module Set
+module Seq
  
 ```
 
@@ -1906,64 +895,18 @@ Seq.nth index source
  
 ofArray
 --------------
-Creates a set that contains the same elements as the given array.
-```
-: 'T array -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.ofArray : 'T array -> Set  (requires comparison)
-
-// Usage:
-Set.ofArray array
- 
-```
-
- 
-ofArray
---------------
 Views the given array as a sequence.
 ```
 : 'T array -> seq<'T>
 ```
 Example
 
-
+<pre><span style="color:Blue;">let</span> seq1 = Array.init 10 (<span style="color:Blue;">fun</span> index -&gt; index.ToString()) 
+           |&gt; Seq.ofArray
+</pre>
 Output
 ```
-
-// Signature:
-Set.ofArray : 'T array -> Set  (requires comparison)
-
-// Usage:
-Set.ofArray array
- 
-```
-
- 
-ofList
---------------
-Creates a set that contains the same elements as the given list.
-```
-: 'T list -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.ofList : 'T list -> Set  (requires comparison)
-
-// Usage:
-Set.ofList elements
- 
+val seq1 : seq 
 ```
 
  
@@ -1975,16 +918,12 @@ Views the given list as a sequence.
 ```
 Example
 
-
+<pre><span style="color:Blue;">let</span> seq1 = List.init 10 (<span style="color:Blue;">fun</span> index -&gt; index.ToString())
+           |&gt; Seq.ofList
+</pre>
 Output
 ```
-
-// Signature:
-Set.ofList : 'T list -> Set  (requires comparison)
-
-// Usage:
-Set.ofList elements
- 
+val seq1 : seq  = ["0"; "1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"] 
 ```
 
  
@@ -2106,27 +1045,6 @@ Seq.scan folder state source
  
 singleton
 --------------
-The set containing the given element.
-```
-: 'T -> Set<'T>
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.singleton : 'T -> Set  (requires comparison)
-
-// Usage:
-Set.singleton value
- 
-```
-
- 
-singleton
---------------
 Returns a sequence that yields one item only.
 ```
 : 'T -> seq<'T>
@@ -2138,10 +1056,10 @@ Output
 ```
 
 // Signature:
-Set.singleton : 'T -> Set  (requires comparison)
+Seq.singleton : 'T -> seq 
 
 // Usage:
-Set.singleton value
+Seq.singleton value
  
 ```
 
@@ -2296,27 +1214,6 @@ Output
  
 toArray
 --------------
-Creates an array that contains the elements of the set in order.
-```
-: Set<'T> -> 'T array
-```
-Example
-
-
-Output
-```
-
-// Signature:
-Set.toArray : Set  -> 'T array (requires comparison)
-
-// Usage:
-Set.toArray set
- 
-```
-
- 
-toArray
---------------
 Creates an array from the given collection.
 ```
 : seq<'T> -> 'T []
@@ -2328,10 +1225,10 @@ Output
 ```
 
 // Signature:
-Set.toArray : Set  -> 'T array (requires comparison)
+Seq.toArray : seq  -> 'T array
 
 // Usage:
-Set.toArray set
+Seq.toArray source
  
 ```
 
@@ -2349,10 +1246,10 @@ Output
 ```
 
 // Signature:
-Set.toList : Set  -> 'T list (requires comparison)
+Seq.toList : seq  -> 'T list
 
 // Usage:
-Set.toList set
+Seq.toList source
  
 ```
 
